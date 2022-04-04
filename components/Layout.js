@@ -18,8 +18,7 @@ export default function Layout({children, pageProps}){
                     <Footer />
                 </div>
                 :
-                (console.log(router.pathname.substring(0, 10)))
-                (console.log(router.pathname.substring(0, 10)))
+                <></>
             }
         </div>
     )
