@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const postRating = (video_rating, video_id) => {
     console.log('Client Rating: ', video_rating);
     console.log('Client ID: ', video_id);
-    fetch('http://localhost:3000/api/rate', {
+    fetch('https://fletnix.vercel.app/api/rate', {
         method: 'POST',
         body: JSON.stringify({
             rating: video_rating,

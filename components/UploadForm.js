@@ -76,7 +76,7 @@ export default function SignUpForm({ csrfToken }) {
                         alert("There was an error uploading the video.");
                         return;
                     }
-                    const res = await fetch('http://localhost:3000/api/video', {
+                    const res = await fetch('https://fletnix.vercel.app/api/video', {
                         method: 'POST',
                         body: JSON.stringify({
                             redirect: false,

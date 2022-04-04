@@ -23,7 +23,7 @@ const save_file = async (file) => {
 export default async (req, res) => {
     if (req.method == "POST") {
 
-        const user_res = await fetch('http://localhost:3000/api/user', {
+        const user_res = await fetch('https://fletnix.vercel.app/api/user', {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",

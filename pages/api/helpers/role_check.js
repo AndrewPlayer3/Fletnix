@@ -3,7 +3,7 @@ import { getSession } from 'next-auth/react'
 export default async function roleGuard(context) {
     const { data: session, status } = getSession()
 
-    const user_res = await fetch('http://localhost:3000/api/user', {
+    const user_res = await fetch('https://fletnix.vercel.app/api/user', {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",

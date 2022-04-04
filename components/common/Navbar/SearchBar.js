@@ -7,7 +7,7 @@ export default function SearchBar({ liveSearch }) {
     const [input, setInput] = useState('');
 
     function onKeyUp(e) {
-        router.push('http://localhost:3000/?text_query=' + input);
+        router.push('https://fletnix.vercel.app/?text_query=' + input);
     }
 
     function onKeyDown(e) {
@@ -17,7 +17,7 @@ export default function SearchBar({ liveSearch }) {
     }
 
     function onSubmit(e) {
-        router.push('http://localhost:3000/?text_query=' + input);
+        router.push('https://fletnix.vercel.app/?text_query=' + input);
     }
 
     if (liveSearch) {

@@ -9,14 +9,14 @@ export async function getServerSideProps(context) {
 
     const id = context.query.id;
 
-    const res = await fetch('http://localhost:3000/api/video?id='+id, {
+    const res = await fetch('https://fletnix.vercel.app/api/video?id='+id, {
             method: 'GET'
         }
     )
 
     const data = await res.json()
 
-    const view = await fetch('http://localhost:3000/api/video', {
+    const view = await fetch('https://fletnix.vercel.app/api/video', {
         method: 'PUT',
         body: JSON.stringify({
             id: context.query.id

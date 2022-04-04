@@ -26,7 +26,7 @@ export default function SignUpForm({ csrfToken }) {
                 })}
                 onSubmit={async (values, { setSubmitting }) => {
                     console.log(JSON.stringify(values));
-                    const res = await fetch('http://localhost:3000/api/user', {
+                    const res = await fetch('https://fletnix.vercel.app/api/user', {
                         method: 'POST',
                         body: JSON.stringify({
                             redirect: false,
@@ -45,7 +45,7 @@ export default function SignUpForm({ csrfToken }) {
                         setError(res.error);
                     } else {
                         setError(null);
-                        router.push('http://localhost:3000/api/auth/signin');
+                        router.push('https://fletnix.vercel.app/api/auth/signin');
                     }
                     setSubmitting(false);
                 }}

@@ -4,7 +4,7 @@ import Video from '../../models/video';
 const handler = async (req, res) => {
     if (req.method === 'POST') {   // Set Video Information | TODO: Only CONTENT_EDITORs should be able to make these requests.
 
-        const user_res = await fetch('http://localhost:3000/api/user', {
+        const user_res = await fetch('https://fletnix.vercel.app/api/user', {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
@@ -70,7 +70,7 @@ const handler = async (req, res) => {
             }
         }
     } else if (req.method == 'DELETE') {
-        const user_res = await fetch('http://localhost:3000/api/user', {
+        const user_res = await fetch('https://fletnix.vercel.app/api/user', {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",

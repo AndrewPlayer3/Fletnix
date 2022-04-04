@@ -1,5 +1,5 @@
 export default async function queryVideos(context) {
-    let url = "http://localhost:3000/api/video";
+    let url = "https://fletnix.vercel.app/api/video";
 
     if (context.query.title) {
         url += "?text_query=" + context.query.title;

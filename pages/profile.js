@@ -6,7 +6,7 @@ export async function getServerSideProps(context) {
 
     const session = await getSession(context);
 
-    const res = await fetch('http://localhost:3000/api/user', {
+    const res = await fetch('https://fletnix.vercel.app/api/user', {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",
