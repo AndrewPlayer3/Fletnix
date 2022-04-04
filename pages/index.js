@@ -16,6 +16,14 @@ export async function getServerSideProps(context) {
         },
     });
 
+    if (res.status == 500) {
+        return {
+            props: {
+                videos: []
+            }
+        }
+    }
+
     const data = await res.json();
 
     return {
