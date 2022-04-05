@@ -27,8 +27,7 @@ export default connectDB(NextAuth({
                 const is_attempt_correct = await bcrypt.compare(credentials.password, userInfo.password);
 
                 if (is_attempt_correct) {
-                    const user = { username: userInfo.username, email: userInfo.email, role: userInfo.role }
-                    return user;
+                    return { username: userInfo.username, email: userInfo.email, role: userInfo.role };
                 } else {
                     console.log('password incorrect or user not found');
                     return null;
@@ -41,6 +40,22 @@ export default connectDB(NextAuth({
         signIn: '/login',
         newUser: '/signup'
     },
-    // Enable debug messages in the console if you are having problems
     debug: process.env.NODE_ENV === 'development',
+    callbacks: {
+         async jwt({ token, user }) {
+            if (user) {
+                return {
+                    ...token,
+                    username: user.username,
+                    role: user.role,
+                };
+            }
+            return token;
+        },
+        async session({ session, token }) {
+            session.user.username = token.username;
+            session.user.role = token.role;
+            return session;
+        },
+    },
 }));
