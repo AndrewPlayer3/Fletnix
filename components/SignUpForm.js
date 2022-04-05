@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { signUp, getCsrfToken } from 'next-auth/react';
+import { getCsrfToken } from 'next-auth/react';
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
