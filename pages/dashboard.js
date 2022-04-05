@@ -1,49 +1,30 @@
-import { UserIcon, VideoCameraIcon, PresentationChartLineIcon } from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/react'
 import Sidebar from "../components/common/Sidebar/Sidebar";
 import Layout from "../components/Layout.js"
 import Profile from '../components/Profile'
-import roleGuard from './api/helpers/role_check';
+import loginStatus from '../helpers/login-status'
 
-export async function getServerSideProps(context) {
+export default function Dashboard({ children }) {
 
-    const user = await roleGuard(context);
+    const { data: session, status } = useSession();
+    const router = useRouter();
 
-    if (user.redirect_login) {
-        return {
-            redirect: {
-                destination: '/login',
-                permanent: false,
-            },
-        }
-    }
-
-    if (user.redirect_profile) {
-        return {
-            redirect: {
-                destination: '/profile',
-                permanent: false,
-            },
-        }
-    }
-
-    return {
-        props: {
-            user: user
-        },
-    }
-}
-
-export default function Dashboard({ children, user }) {
     return (
-        <div className="flex flex-col items-center justify-center md:flex-row">
-            <div className="relative">
-                <Sidebar />
+        <>
+        { loginStatus(status, router) ?
+            <div className="flex flex-col items-center justify-center md:flex-row">
+                <div className="relative">
+                    <Sidebar />
+                </div>
+                <div id="myTabContent" className="absolute w-2/4 h-2/4 left-1/4 top-1/5">
+                    <Profile user = { session.user } />
+                </div>
             </div>
-            <div id="myTabContent" className="absolute w-2/4 h-2/4 left-1/4 top-1/5">
-                <Profile user={user} />
-            </div>
-        </div>
+            :
+            <></>
+        }
+        </>
     )
 }
 
