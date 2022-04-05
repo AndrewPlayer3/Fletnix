@@ -1,6 +1,4 @@
-
 export default function DisplayRating({ rating }) {
-    
     return (
         <div className="flex w-auto h-full items-end justify-center star-rating bg-[#000000] bg-opacity-20 rounded-sm">
         {[...Array(5)].map((star, index) => {
