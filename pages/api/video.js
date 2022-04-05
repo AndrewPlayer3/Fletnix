@@ -105,7 +105,6 @@ const handler = async (req, res) => {
     } else {
         res.status(422).send('Invalid Request.');
     }
-    // TODO: Delete Request (Based off of Mongo ID for Video)
 };
 
 export default connectDB(handler);
