@@ -4,6 +4,9 @@ import DisplayRating from './DisplayRating'
 
 
 export default function Thumbnail({result}){
+    
+    const rating = result['analytics'].num_ratings == 0 ? 0 : result['analytics'].total_rating / result['analytics'].num_ratings;
+
     return(
         <div className=''>
             <div className='block m-2 cursor-pointer'>
@@ -19,7 +22,7 @@ export default function Thumbnail({result}){
                                 className="rounded-md"
                             />
                             <div className='absolute bottom-0 right-0 opacity-70'>
-                                <DisplayRating rating={result['analytics'].total_rating} />
+                                <DisplayRating rating={ rating } />
                             </div>
                         </div>
                     </Link>
