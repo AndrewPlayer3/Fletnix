@@ -4,8 +4,9 @@ import DisplayRating from './DisplayRating'
 
 
 export default function Thumbnail({result}){
-    
+ 
     const rating = result['analytics'].num_ratings == 0 ? 0 : result['analytics'].total_rating / result['analytics'].num_ratings;
+    const thumb_url = process.env.GOOGLE_STORAGE+result['thumbnail']
 
     return(
         <div className=''>
@@ -16,7 +17,7 @@ export default function Thumbnail({result}){
                         <div className='relative flex h-auto w-auto rounded-md drop-shadow-2xl hover:border-2 hover:border-opacity-0 hover:border-slate-900'>
                             <Image 
                                 layouts='fill'
-                                src={result['thumbnail']}
+                                src={thumb_url}
                                 height='720px'
                                 width='1280px'
                                 className="rounded-md"

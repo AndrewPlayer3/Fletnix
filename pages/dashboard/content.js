@@ -131,7 +131,7 @@ export default function Content({ videos }) {
                                                         <div className="relative w-1/3">
                                                             <Image 
                                                                 layouts='fill'
-                                                                src={video.thumbnail}
+                                                                src={process.env.GOOGLE_STORAGE+video.thumbnail}
                                                                 height='1080'
                                                                 width='1920'
                                                                 className="rounded-md"

@@ -29,7 +29,7 @@ export async function getServerSideProps(context) {
         props: {
             id: id,
             title: data.title,
-            location: data.location,
+            location: process.env.GOOGLE_STORAGE + data.filename,
             description: data.description,
             rating: rating
         },

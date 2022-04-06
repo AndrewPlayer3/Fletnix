@@ -3,7 +3,6 @@ import Video from '../../models/video';
 
 const handler = async (req, res) => {
     if (req.method === 'POST') {   // Set Video Information | TODO: Only CONTENT_EDITORs should be able to make these requests.
-
         const user_res = await fetch('https://fletnix.vercel.app/api/user', {
             method: 'GET',
             headers: {
@@ -15,13 +14,10 @@ const handler = async (req, res) => {
         if (!user_data.role.content_editor) {
             return res.status(403).send('Only Content Editors can Upload Videos.');  
         }
-
-        const { title, storage_location, thumbnail_location, length, resolution, description, tags } = JSON.parse(req.body);
+        const { title, length, resolution, description, tags } = JSON.parse(req.body);
         try {
             var video = new Video({
                 title: title,
-                location: storage_location,
-                thumbnail: thumbnail_location,
                 description: description,
                 tags: tags,
                 metadata: {
@@ -101,6 +97,15 @@ const handler = async (req, res) => {
             res.status(200).send({viewed: true})
         } catch (error) {
             res.status(500).send({message: 'Error putting view'});
+        }
+    } else if (req.method == 'PATCH') {
+        const { id, filename, thumbnail } = JSON.parse(req.body);
+        try {
+            const add_filenames = await Video.findByIdAndUpdate(id, {$set: {filename: filename, thumbnail: thumbnail}}, {new: true, upsert: true});
+            return res.status(200).send({ success: true, video: add_filenames  });
+        } catch (error) {
+            console.log("Video PATCH Error: ", error.message);
+            return res.status(500).send({ success: false, video: { id: id, filename: filename, thumbnail: thumbnail }, error: error.message })
         }
     } else {
         res.status(422).send('Invalid Request.');

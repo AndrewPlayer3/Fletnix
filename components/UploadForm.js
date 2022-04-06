@@ -36,9 +36,11 @@ export default function SignUpForm({ csrfToken }) {
         }
     };
 
-    const uploadThumbnailToServer = async (event) => {
+    const uploadThumbnailToServer = async (id) => {
         const body = new FormData();
         body.append("file", thumbnail);
+        body.append("type", "thumbnails");
+        body.append("id", id)
         const response = await fetch("/api/upload", {
             method: "POST",
             body
@@ -47,9 +49,11 @@ export default function SignUpForm({ csrfToken }) {
         return data.location;
     };
 
-    const uploadVideoToServer = async (event) => {
+    const uploadVideoToServer = async (id) => {
         const body = new FormData();
         body.append("file", video);
+        body.append("type", "videos");
+        body.append("id", id);
         const response = await fetch("/api/upload", {
             method: "POST",
             body
@@ -70,25 +74,39 @@ export default function SignUpForm({ csrfToken }) {
                 })}
                 onSubmit={async (values, { setSubmitting }) => {
                     console.log(JSON.stringify(values));
-                    const video_location = await uploadVideoToServer();
-                    const thumbnail_location = await uploadThumbnailToServer();
-                    if (!(video_location || thumbnail_location)) {
-                        alert("There was an error uploading the video.");
-                        return;
-                    }
                     const res = await fetch('https://fletnix.vercel.app/api/video', {
                         method: 'POST',
                         body: JSON.stringify({
                             redirect: false,
                             title: values.title,
                             description: values.description,
-                            storage_location: video_location,
-                            thumbnail_location: '/' + thumbnail_location, 
                             tags: values.tags.split(",").map(function(item){return item.trim()}), 
                             length: values.video_length,
                             callbackUrl: `${window.location.origin}`,
                         })
                     });
+                    const data = await res.json();
+                    const video_location = await uploadVideoToServer(data._id);
+                    const thumbnail_location = await uploadThumbnailToServer(data._id);
+                    if (!(video_location || thumbnail_location)) {
+                        alert("There was an error uploading the video.");
+                        const del_res = await fetch('https://fletnix.vercel.app/api/video', {
+                            method: 'DELETE',
+                            body: JSON.stringify({
+                                id: data._id
+                            })
+                        });
+                        return;
+                    } else {
+                        const add_filenames = await fetch('https://fletnix.vercel.app/api/video', {
+                            method: 'PATCH',
+                            body: JSON.stringify({
+                                id: data._id,
+                                filename: video_location,
+                                thumbnail: thumbnail_location
+                            })
+                        })
+                    }
                     alert(values.title + ' has been uploaded.');
                     setSubmitting(false);
                 }}
