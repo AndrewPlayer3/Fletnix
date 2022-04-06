@@ -1,8 +1,0 @@
-[{"username": "uname",
-            "email": "email",
-            "password": "passwordhash",
-            "role": {
-                "viewer": true,
-                "content_editor": false,
-                "content_manager": false
-            }}]

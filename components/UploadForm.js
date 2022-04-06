@@ -1,21 +1,8 @@
 import { useState } from 'react';
-import { signUp, getCsrfToken } from 'next-auth/react';
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
 
-// This is the recommended way for Next.js 9.3 or newer
-export async function getServerSideProps(context) {
-    return {
-        props: {
-            csrfToken: await getCsrfToken(context),
-        },
-    };
-}
-
-export default function SignUpForm({ csrfToken }) {
-    const router = useRouter();
-    const [error, setError] = useState(null);
+export default function UploadForm() {
     const [thumbnail, setThumbnail] = useState(null);
     const [video, setVideo] = useState(null);
     const [createObjectURL, setCreateObjectURL] = useState(null);
@@ -40,8 +27,7 @@ export default function SignUpForm({ csrfToken }) {
         const body = new FormData();
         body.append("file", thumbnail);
         body.append("type", "thumbnails");
-        body.append("id", id)
-        const response = await fetch("/api/upload", {
+        const response = await fetch("/api/videos/" + id + "/upload", {
             method: "POST",
             body
         });
@@ -53,8 +39,7 @@ export default function SignUpForm({ csrfToken }) {
         const body = new FormData();
         body.append("file", video);
         body.append("type", "videos");
-        body.append("id", id);
-        const response = await fetch("/api/upload", {
+        const response = await fetch("/api/videos/" + id + "/upload", {
             method: "POST",
             body
         });
@@ -74,13 +59,13 @@ export default function SignUpForm({ csrfToken }) {
                 })}
                 onSubmit={async (values, { setSubmitting }) => {
                     console.log(JSON.stringify(values));
-                    const res = await fetch('https://fletnix.vercel.app/api/video', {
+                    const res = await fetch('https://fletnix.vercel.app/api/videos', {
                         method: 'POST',
                         body: JSON.stringify({
                             redirect: false,
                             title: values.title,
                             description: values.description,
-                            tags: values.tags.split(",").map(function(item){return item.trim()}), 
+                             tags: values.tags.split(",").map(function(item){return item.trim()}), 
                             length: values.video_length,
                             callbackUrl: `${window.location.origin}`,
                         })
@@ -90,18 +75,14 @@ export default function SignUpForm({ csrfToken }) {
                     const thumbnail_location = await uploadThumbnailToServer(data._id);
                     if (!(video_location || thumbnail_location)) {
                         alert("There was an error uploading the video.");
-                        const del_res = await fetch('https://fletnix.vercel.app/api/video', {
+                        const del_res = await fetch('https://fletnix.vercel.app/api/videos/' + data._id, {
                             method: 'DELETE',
-                            body: JSON.stringify({
-                                id: data._id
-                            })
                         });
                         return;
                     } else {
-                        const add_filenames = await fetch('https://fletnix.vercel.app/api/video', {
+                        const add_filenames = await fetch('https://fletnix.vercel.app/api/videos/' + data._id, {
                             method: 'PATCH',
                             body: JSON.stringify({
-                                id: data._id,
                                 filename: video_location,
                                 thumbnail: thumbnail_location
                             })

@@ -13,7 +13,7 @@ export default function Thumbnail({result}){
             <div className='block m-2 cursor-pointer'>
                 {/* Each Video Thumbnail display/ Display default thumbnail if there is none in db */}
                 <div>
-                    <Link href={{pathname: '/video', query: {"id": result['_id']}}}>
+                    <Link href={ { pathname: '/videos/' + result['_id'] } }>
                         <div className='relative flex h-auto w-auto rounded-md drop-shadow-2xl hover:border-2 hover:border-opacity-0 hover:border-slate-900'>
                             <Image 
                                 layouts='fill'

@@ -3,7 +3,7 @@ import Layout   from "../components/Layout.js"
 
 export async function getServerSideProps(context) {
 
-    let url = "https://fletnix.vercel.app/api/video";
+    let url = "https://fletnix.vercel.app/api/videos";
     
     if (context.query.text_query) {
         url += "?text_query=" + context.query.text_query;

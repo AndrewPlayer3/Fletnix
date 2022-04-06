@@ -1,42 +1,37 @@
 import { useSession } from "next-auth/react"
 import ReactPlayer from 'react-player/file';
-import Rating from '../components/Rating'
-import Navbar from '../components/common/Navbar'
+import Rating from '../../components/Rating'
+import Navbar from '../../components/common/Navbar'
 import { useRouter } from 'next/router'
-import loginStatus from '../helpers/login-status'
+import loginStatus from '../../helpers/login-status'
 
 export async function getServerSideProps(context) {
 
-    const id = context.query.id;
+    const { vid } = context.query;
 
-    const res = await fetch('https://fletnix.vercel.app/api/video?id='+id, {
+    const res = await fetch('https://fletnix.vercel.app/api/videos/' + vid, {
             method: 'GET'
         }
     )
     const data = await res.json()
 
-    const view = await fetch('https://fletnix.vercel.app/api/video', {
+    const view = await fetch('https://fletnix.vercel.app/api/videos/' + vid, {
         method: 'PUT',
-        body: JSON.stringify({
-            id: context.query.id
-        })
     });
     await view.json();
 
-    const rating = Math.round(data.analytics.total_rating / data.analytics.num_ratings)
-
     return {
         props: {
-            id: id,
-            title: data.title,
-            location: process.env.GOOGLE_STORAGE + data.filename,
-            description: data.description,
-            rating: rating
+            id: vid,
+            title: data.video.title,
+            location: process.env.GOOGLE_STORAGE + data.video.filename,
+            description: data.video.description,
+            vid: vid
         },
     }
 }
 
-export default function Home({ title, location, description, id, rating }) {
+export default function Home({ title, location, description, vid }) {
 
     const { data: session, status } = useSession();
     const router = useRouter();
@@ -57,7 +52,8 @@ export default function Home({ title, location, description, id, rating }) {
                                     <h1 className='font-bold text-white'> { title } </h1>
                                 </div>
                                 <div className='flex mr-4 mr-4 w-full items-start justify-end'>
-                                    <Rating video_id={ id } />
+                                    {(console.log("VID: ", vid))}
+                                    <Rating video_id={ vid } />
                                 </div>
                             </div>
                             <div className="mb-8">

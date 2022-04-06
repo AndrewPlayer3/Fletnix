@@ -48,6 +48,9 @@ export const config = {
 };
 
 export default async (req, res) => {
+    
+    const { vid } = req.query;
+    
     if (req.method == "POST") {
         try {
             const user_res = await fetch('https://fletnix.vercel.app/api/user', {
@@ -71,13 +74,13 @@ export default async (req, res) => {
                 })
             })
 
-            const destFileName = data?.fields.type + '/' + data?.fields.id + "." + data?.files.file.mimetype.split('/')[1];
+            const destFileName = data?.fields.type + '/' + vid + "." + data?.files.file.mimetype.split('/')[1];
 
             const uploaded = await uploadFileToGoogleCloud({filePath: data?.files.file.filepath, destFileName: destFileName});
 
-            return res.status(200).send({"uploaded": true, location: destFileName});
+            return res.status(200).send({"uploaded": true, location: destFileName, id: vid});
         } catch (error) {
-            return res.status(500).send({ "uploaded": false, location: "", error: error.message });
+            return res.status(500).send({ "uploaded": false, location: "", error: error.message, id: vid});
         }
     }
 }
