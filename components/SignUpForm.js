@@ -5,13 +5,14 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 
 export default function SignUpForm({ csrfToken }) {
+
     const router = useRouter();
     const [error, setError] = useState(null);
 
     return (
         <div className="flex h-full items-center justify-center">
             <Formik
-                initialValues={{ username: '', password: '', confirmpassword: '', email: '', content_editor: false, content_manager: false}}
+                initialValues={{ username: '', password: '', confirmpassword: '', email: '', content_editor: false, content_manager: false }}
                 validationSchema={Yup.object({
                     email: Yup.string().required('Please enter your email   '),
                     username: Yup.string().required('Please enter a username   '),
@@ -19,14 +20,14 @@ export default function SignUpForm({ csrfToken }) {
                     confirmpassword: Yup.string().when("password", {
                         is: val => (val && val.length > 0 ? true : false),
                         then: Yup.string().oneOf(
-                        [Yup.ref("password")],
-                        "Passwords do not match"
+                            [Yup.ref("password")],
+                            "Passwords do not match"
                         )
                     })
                 })}
                 onSubmit={async (values, { setSubmitting }) => {
                     console.log(JSON.stringify(values));
-                    const res = await fetch('https://fletnix.vercel.app/api/user', {
+                    const res = await fetch(process.env.HOSTNAME + '/api/user', {
                         method: 'POST',
                         body: JSON.stringify({
                             redirect: false,
@@ -45,7 +46,7 @@ export default function SignUpForm({ csrfToken }) {
                         setError(res.error);
                     } else {
                         setError(null);
-                        router.push('https://fletnix.vercel.app/api/auth/signin');
+                        router.push(process.env.HOSTNAME + '/api/auth/signin');
                     }
                     setSubmitting(false);
                 }}
@@ -100,7 +101,7 @@ export default function SignUpForm({ csrfToken }) {
                                     <div className="text-red-600 text-sm">
                                         <ErrorMessage name="email" />
                                     </div>
-                               </div>
+                                </div>
                                 <div className="mb-4">
                                     <label
                                         htmlFor="password"
@@ -127,17 +128,41 @@ export default function SignUpForm({ csrfToken }) {
                                     >
                                         re-type password
                                         <Field
-                                        name="confirmpassword"
-                                        aria-label="enter your password"
-                                        aria-required="true"
-                                        type="password"
-                                        className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                                            name="confirmpassword"
+                                            aria-label="enter your password"
+                                            aria-required="true"
+                                            type="password"
+                                            className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                                         />
                                     </label>
 
                                     <div className="text-red-600 text-sm">
                                         <ErrorMessage name="confirmpassword" />
                                     </div>
+                                </div>
+                                <div>
+                                    <label className='text-[#223843]'>
+                                        <div className="flex">
+                                            <div className="mr-1">
+                                                <Field type="checkbox" name="content_editor" />
+                                            </div>
+                                            <div>
+                                                Content Editor
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div className='mb-4'>
+                                    <label className='text-[#223843]'>
+                                        <div className="flex">
+                                            <div className="mr-1">
+                                                <Field type="checkbox" name="content_manager" />
+                                            </div>
+                                            <div>
+                                                Content Manager
+                                            </div>
+                                        </div>
+                                    </label>
                                 </div>
                                 <div className="flex items-center justify-center">
                                     <button

@@ -6,15 +6,14 @@ export default function profile({ user }) {
 
     //const { data: session } = useSession();
     if (user.username !== '') {
-        
+
         const { username, email, role } = user;
-        
+
         var roles = "";
         if (role.viewer) roles += "Viewer ";
         if (role.content_editor) roles += "Content_Editor ";
         if (role.content_manager) roles += "Content_Manager ";
 
-        
         return (
             <div className='flex mt-8 h-auto w-auto items-center justify-center'>
                 <div className="bg-white shadow overflow-hidden sm:rounded-lg">
@@ -26,15 +25,15 @@ export default function profile({ user }) {
                         <dl>
                             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt className="text-sm font-medium text-gray-500">Username</dt>
-                                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{ username }</dd>
+                                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{username}</dd>
                             </div>
                             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt className="text-sm font-medium text-gray-500">Email address</dt>
-                                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{ email }</dd>
+                                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{email}</dd>
                             </div>
                             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt className="text-sm font-medium text-gray-500">Role</dt>
-                                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{ roles }</dd>
+                                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{roles}</dd>
                             </div>
                             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt className="text-sm font-medium text-gray-500">Password</dt>
@@ -56,9 +55,9 @@ export default function profile({ user }) {
         )
     }
 
-    return ( 
+    return (
         <div className="h-auto w-auto mt-10 flex item-center justify-center">
-           <LoginForm />
+            <LoginForm />
         </div>
     )
 }

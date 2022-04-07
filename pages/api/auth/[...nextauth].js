@@ -7,8 +7,10 @@ import User from '../../../models/user';
 export default connectDB(NextAuth({
     providers: [
         CredentialsProvider({
+
             // The name to display on the sign in form (e.g. 'Sign in with...')
             name: 'VideoPage',
+
             // The credentials is used to generate a suitable form on the sign in page.
             // You can specify whatever fields you are expecting to be submitted.
             // e.g. domain, username, password, 2FA token, etc.
@@ -21,7 +23,8 @@ export default connectDB(NextAuth({
                 },
                 password: { label: 'Password', type: 'password' },
             },
-            async authorize(credentials, req) {
+
+            async authorize(credentials, _) {
 
                 const userInfo = await User.findOne({ username: credentials.username });
                 const is_attempt_correct = await bcrypt.compare(credentials.password, userInfo.password);
@@ -35,15 +38,24 @@ export default connectDB(NextAuth({
             },
         })
     ],
+
     secret: process.env.JWT_SECRET,
+
     pages: {
         signIn: '/login',
         newUser: '/signup'
     },
+
+    // Enable debug messages in the console if you are having problems
     debug: process.env.NODE_ENV === 'development',
+
     callbacks: {
-         async jwt({ token, user }) {
-            if (user) {
+        async jwt({ token, user }) {
+            /* 
+             * TODO: attmepts to grab these fields when there is no
+             * session may result in errors due to being undefined.
+             */
+            if (user) { 
                 return {
                     ...token,
                     username: user.username,

@@ -9,14 +9,14 @@ export default function NavBar({ liveSearch }) {
     const [input, setInput] = useState('');
 
     function onKeyDown(e) {
-        router.push('https://fletnix.vercel.app/?title=' + input);
+        router.push(process.env.HOSTNAME + '/?title=' + input);
         if (e.key === 'Enter') {
             onSubmit(e);
         }
     }
 
     function onSubmit(e) {
-        router.push('https://fletnix.vercel.app/?title=' + input);
+        router.push(process.env.HOSTNAME + '/?title=' + input);
     }
 
     return (
@@ -30,7 +30,7 @@ export default function NavBar({ liveSearch }) {
                                     <div className='flex ml-1 items-center'>
                                         <img
                                             className="flex items-end justify-start bg-slate-200 rounded-md lg:block h-6 mx-1"
-                                            src="https://fletnix.vercel.app/movie-film.png"
+                                            src={process.env.HOSTNAME + "/movie-film.png"}
                                             alt="Logo"
                                         />
                                     </div>
@@ -42,7 +42,7 @@ export default function NavBar({ liveSearch }) {
                         </div>
                     </div>
                     {/* Search Bar and Button */}
-                    <SearchBar liveSearch = { liveSearch } />
+                    <SearchBar liveSearch={liveSearch} />
                     <ProfileMenu />
                 </div>
             </div>

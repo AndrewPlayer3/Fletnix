@@ -1,5 +1,6 @@
 export default async function queryVideos(context) {
-    let url = "https://fletnix.vercel.app/api/videos";
+
+    let url = process.env.HOSTNAME + "/api/videos";
 
     if (context.query.title) {
         url += "?text_query=" + context.query.title;
@@ -11,8 +12,7 @@ export default async function queryVideos(context) {
             "Content-Type": "application/json",
         },
     });
-
     const data = await res.json();
 
-    return data;
+    return data.query_results;
 }

@@ -1,7 +1,7 @@
 import Thumbnail from './Thumbnail'
 
-export default function Results({result, classes}){
-    return(
+export default function Results({ result, classes }) {
+    return (
         <div>
             {/* Map each video data AKA display each video thmbnail */}
             <div className={classes}>

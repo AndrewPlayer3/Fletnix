@@ -49,7 +49,7 @@ export default function LoginForm({ csrfToken }) {
                     htmlFor="username"
                     className="uppercase text-sm text-gray-600 font-bold"
                   >
-                    username 
+                    username
                     <Field
                       name="username"
                       aria-label="enter your username"
@@ -83,14 +83,14 @@ export default function LoginForm({ csrfToken }) {
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
-                <button
+                  <button
                     type="submit"
                     className="uppercase text-sm font-bold tracking-wide bg-slate-600 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline hover:shadow-xl hover:border hover:border-opacity-0 transition duration-150"
                   >
                     {formik.isSubmitting ? 'Please wait...' : 'Sign In'}
                   </button>
                   <button
-                    onClick = {() => router.push('/signup')}
+                    onClick={() => router.push('/signup')}
                     name="signup"
                     type="button"
                     className="uppercase text-sm font-bold mx-2 tracking-wide bg-slate-800 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline hover:shadow-xl hover:shadow-xl hover:border hover:border-opacity-0 transition duration-150"

@@ -1,9 +1,9 @@
 import React from 'react';
-import {withRouter} from "next/router";
+import { withRouter } from "next/router";
 import Link from "next/link";
 
-function NavLink({svg, label = "Label", href = "#", router}) {
-    const {pathname} = router;
+function NavLink({ svg, label = "Label", href = "#", router }) {
+    const { pathname } = router;
 
     return (
         <Link href={href}>
@@ -22,19 +22,19 @@ function Sidebar() {
         className="flex flex-col text-slate-200 h-auto w-64 flex-shrink-0 py-4 px-1"
     >
         <LinkAction href="/dashboard"
-                    svg={<svg className="fill-current text-slate-200 w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24">
-                        <path className="heroicon-ui"
-                              d="M13 20v-5h-2v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-7.59l-.3.3a1 1 0 11-1.4-1.42l9-9a1 1 0 011.4 0l9 9a1 1 0 01-1.4 1.42l-.3-.3V20a2 2 0 01-2 2h-3a2 2 0 01-2-2zm5 0v-9.59l-6-6-6 6V20h3v-5c0-1.1.9-2 2-2h2a2 2 0 012 2v5h3z"/>
-                    </svg>} label="Profile"/>
+            svg={<svg className="fill-current text-slate-200 w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24">
+                <path className="heroicon-ui"
+                    d="M13 20v-5h-2v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-7.59l-.3.3a1 1 0 11-1.4-1.42l9-9a1 1 0 011.4 0l9 9a1 1 0 01-1.4 1.42l-.3-.3V20a2 2 0 01-2 2h-3a2 2 0 01-2-2zm5 0v-9.59l-6-6-6 6V20h3v-5c0-1.1.9-2 2-2h2a2 2 0 012 2v5h3z" />
+            </svg>} label="Profile" />
 
         <LinkAction href="/dashboard/content"
-                    svg={<svg className="fill-current text-slate-200 w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" 
-                              viewBox="0 0 24 24">
-                    <path className="heroicon-ui" 
-                            d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                    </svg>} label="Content"/>
-                    
+            svg={<svg className="fill-current text-slate-200 w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24">
+                <path className="heroicon-ui"
+                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>} label="Content" />
+
 
         {/* <LinkAction href="/dashboard/analytics"
                     svg={<svg className="fill-current text-slate-200 w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg"
