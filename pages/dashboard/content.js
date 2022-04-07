@@ -64,8 +64,10 @@ export default function Content({ videos }) {
 
                 const removedres = await fetch(process.env.HOSTNAME + '/api/videos/' + id + '/upload', {
                     method: 'DELETE',
-                    filename: data.filename,
-                    thumbnail: data.thumbnail
+                    body: JSON.stringify({
+                        filename: data.filename,
+                        thumbnail: data.thumbnail
+                    })
                 })
                 const removed = await removedres.json();
 
