@@ -43,6 +43,9 @@ export default function UploadForm() {
 
         const upload = await fetch(signedurl, {
             method: 'PUT',
+            headers: {
+                'Content-Type': 'application/octet-stream'
+            },
             body: file 
         });
     
