@@ -32,17 +32,36 @@ async function getSignedURLForUpload(fileName, fileType) {
             .file(fileName)
             .getSignedUrl(options);
 
-        console.log('Generated PUT signed URL:');
-        console.log(url);
-        console.log('You can use this URL with any user agent, for example:');
-        console.log(
-            "curl -X PUT -H 'Content-Type: application/octet-stream' " +
-            `--upload-file my-file '${url}'`
-        );
         return url;
     }
 
     return await generateV4UploadSignedUrl()
+}
+
+
+async function deleteFromCloud(fileName) {
+
+    // The ID of your GCS bucket
+    const bucketName = process.env.GOOGLE_BUCKET_NAME;
+
+    // Imports the Google Cloud client library
+    const { Storage } = require('@google-cloud/storage');
+
+    // Creates a client
+    const storage = new Storage({
+        projectId: process.env.GOOGLE_PROJECT_ID,
+        credentials: {
+            client_email: process.env.GOOGLE_CLIENT_EMAIL,
+            private_key: process.env.GOOGLE_PRIVATE_KEY
+        }
+    });
+
+    async function deleteFile() {
+        await storage.bucket(bucketName).file(fileName).delete();
+        console.log(`gs://${bucketName}/${fileName} deleted`);
+    }
+
+    await deleteFile();
 }
 
 
@@ -77,6 +96,32 @@ export default async (req, res) => {
             return res.status(200).send({ success: true, upload_url: url, filename: filename});
         } catch (error) {
             return res.status(500).send({ success: false, upload_url: "", filename: filename, error: error.message });
+        }
+
+
+    } else if (req.method == "DELETE") {
+
+        const user_res = await fetch(process.env.HOSTNAME + '/api/user', {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                cookie: req.headers.cookie,
+            },
+        });
+        const user_data = await user_res.json();
+
+        if (!user_data.role.content_editor) {
+            return res.status(403).send({ error: 'Only Content Editors can Delete Videos.' });
+        }
+
+        const { filename, thumbnail } = JSON.parse(req.body);
+
+        try {
+            await deleteFromCloud(thumbnail);
+            await deleteFromCloud(filename);
+            return res.status(200).send({ success: true, filename: filename, thumbnail: thumbnail });
+        } catch (error) {
+            return res.status(500).send({ success: false, filename: filename, thumbnail: thumbnail });
         }
     }
 }
