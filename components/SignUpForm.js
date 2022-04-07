@@ -140,7 +140,7 @@ export default function SignUpForm({ csrfToken }) {
                                         <ErrorMessage name="confirmpassword" />
                                     </div>
                                 </div>
-                                {process.env.ALLOW_ROLES ?
+                                {process.env.ALLOW_ROLES == 'true' ?
                                     <>
                                         <div>
                                             <label className='text-[#223843]'>

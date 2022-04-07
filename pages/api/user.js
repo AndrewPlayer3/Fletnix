@@ -20,8 +20,8 @@ const handler = async (req, res) => {
                     password: passwordhash,
                     role: {
                         viewer: true,
-                        content_editor: process.env.ALLOW_ROLES ? roles.content_editor : false,
-                        content_manager: process.env.ALLOW_ROLES ? roles.content_manager : false
+                        content_editor: process.env.ALLOW_ROLES  == 'true' ? roles.content_editor : false,
+                        content_manager: process.env.ALLOW_ROLES == 'true' ? roles.content_manager : false
                     }
                 });
                 var usercreated = await user.save();
