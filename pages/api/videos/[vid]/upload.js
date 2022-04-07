@@ -1,5 +1,5 @@
 
-async function getSignedURLForUpload(fileName) {
+async function getSignedURLForUpload(fileName, fileType) {
 
     // The ID of your GCS bucket
     const bucketName = process.env.GOOGLE_BUCKET_NAME;
@@ -23,7 +23,7 @@ async function getSignedURLForUpload(fileName) {
             version: 'v4',
             action: 'write',
             expires: Date.now() + 15 * 60 * 1000, // 15 minutes
-            contentType: 'application/octet-stream',
+            contentType: fileType,
         };
 
         // Get a v4 signed URL for uploading file
@@ -73,8 +73,8 @@ export default async (req, res) => {
         console.log('File Name: ', filename);
 
         try {
-            const url = await getSignedURLForUpload(filename);
-            return res.status(200).send({ success: true, upload_url: url, filename: filename });
+            const url = await getSignedURLForUpload(filename, filetype);
+            return res.status(200).send({ success: true, upload_url: url, filename: filename});
         } catch (error) {
             return res.status(500).send({ success: false, upload_url: "", filename: filename, error: error.message });
         }
