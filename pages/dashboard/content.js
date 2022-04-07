@@ -50,7 +50,7 @@ export default function Content({ videos }) {
         });
 
         if (res.status == 500) {
-            alert('There was an error removing the video.');
+            alert('There was an error removing the video from the database.');
             return;
         } else if (res.status == 403) {
             alert('Unauthorized: You must be a Content Editor to delete videos.');
@@ -58,7 +58,20 @@ export default function Content({ videos }) {
         }
 
         if (res.status == 200) {
-            alert('The video has been deleted.');
+            
+        try {
+                const data = await res.json();
+
+                await fetch(process.env.HOSTNAME + '/api/videos/' + id + '/upload', {
+                    method: 'DELETE',
+                    filename: data.filename,
+                    thumbnail: data.thumbnail
+                })
+
+                alert('Video has been removed.');
+            } catch (error) {
+                alert('Error removing from cloud: ' + error.message);
+            }
         }
 
         router.push('/dashboard/content');
