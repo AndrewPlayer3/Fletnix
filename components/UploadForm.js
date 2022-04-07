@@ -12,6 +12,10 @@ export default function UploadForm() {
     const uploadThumbnailToClient = (event) => {
         if (event.target.files && event.target.files[0]) {
             const i = event.target.files[0];
+            if (i.type.split('/')[0] != "image") {
+                alert('File type not supported: File must be an image.');
+                return
+            }
             setThumbnail(i);
             setCreateObjectURL(URL.createObjectURL(i));
         }
@@ -20,6 +24,10 @@ export default function UploadForm() {
     const uploadVideoToClient = (event) => {
         if (event.target.files && event.target.files[0]) {
             const i = event.target.files[0];
+            if (i.type.split('/')[0] != "video") {
+                alert('File type not supported: File must be a video.');
+                return
+            }
             setVideo(i);
             setCreateObjectURL(URL.createObjectURL(i));
         }
@@ -62,7 +70,7 @@ export default function UploadForm() {
                     tags: Yup.string().required('Please add some tags.'),
                     video_length: Yup.number().required('Please enter the length of the video in seconds.'),
                 })}
-                onSubmit={async (values, { setSubmitting }) => {
+                onSubmit={async (values, { resetForm }) => {
 
                     console.log(JSON.stringify(values));
 
@@ -106,7 +114,10 @@ export default function UploadForm() {
                     }
 
                     alert(values.title + ' has been uploaded.');
-                    setSubmitting(false);
+                    
+                    setThumbnail(null);
+                    setVideo(null);
+                    resetForm();
                 }}
             >
                 {(formik) => (
