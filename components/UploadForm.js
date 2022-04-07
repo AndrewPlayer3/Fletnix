@@ -49,8 +49,6 @@ export default function UploadForm() {
             body: file 
         });
     
-        const upload_finished = await upload.json();
-
         console.log("Google Upload Response: ", upload_finished);
 
         return signedurl_data.filename 
