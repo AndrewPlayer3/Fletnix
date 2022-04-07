@@ -28,7 +28,7 @@ export default function UploadForm() {
     const uploadToServer = async (id, type) => {
 
         const is_video = type == "video";
-        var file = type == is_video ? video : thumbnail;
+        const file = type == is_video ? video : thumbnail;
 
         const signedurl_res = await fetch(process.env.HOSTNAME + "/api/videos/" + id + "/upload", {
             method: "POST",
