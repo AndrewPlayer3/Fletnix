@@ -9,13 +9,13 @@ export async function getServerSideProps(context) {
 
     const { vid } = context.query;
 
-    const res = await fetch(process.env.HOSTNAME + '/api/videos/' + vid, {
+    const res = await fetch(process.env.HOST_NAME + '/api/videos/' + vid, {
         method: 'GET'
     }
     )
     const data = await res.json()
 
-    await fetch(process.env.HOSTNAME + '/api/videos/' + vid, { // Increment the view counter.
+    await fetch(process.env.HOST_NAME + '/api/videos/' + vid, { // Increment the view counter.
         method: 'PUT',
     });
 

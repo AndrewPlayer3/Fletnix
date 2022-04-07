@@ -27,7 +27,7 @@ export default function SignUpForm({ csrfToken }) {
                 })}
                 onSubmit={async (values, { setSubmitting }) => {
                     console.log(JSON.stringify(values));
-                    const res = await fetch(process.env.HOSTNAME + '/api/user', {
+                    const res = await fetch(process.env.HOST_NAME + '/api/user', {
                         method: 'POST',
                         body: JSON.stringify({
                             redirect: false,
@@ -46,7 +46,7 @@ export default function SignUpForm({ csrfToken }) {
                         setError(res.error);
                     } else {
                         setError(null);
-                        router.push(process.env.HOSTNAME + '/api/auth/signin');
+                        router.push(process.env.HOST_NAME + '/api/auth/signin');
                     }
                     setSubmitting(false);
                 }}

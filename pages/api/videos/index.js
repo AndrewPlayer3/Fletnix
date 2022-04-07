@@ -5,7 +5,7 @@ const handler = async (req, res) => {
 
     if (req.method === 'POST') {   // Set Video Information | TODO: Only CONTENT_EDITORs should be able to make these requests.
 
-        const user_res = await fetch(process.env.HOSTNAME + '/api/user', {
+        const user_res = await fetch(process.env.HOST_NAME + '/api/user', {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",

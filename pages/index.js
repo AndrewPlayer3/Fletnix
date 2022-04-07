@@ -7,7 +7,7 @@ export async function getServerSideProps(context) {
     var qry = "";
     if (context.query.text_query) qry = "?text_query=" + context.query.text_query;
 
-    const res = await fetch(process.env.HOSTNAME + "/api/videos" + qry, {
+    const res = await fetch(process.env.HOST_NAME + "/api/videos" + qry, {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",

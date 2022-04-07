@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const postRating = (video_rating, video_id) => {
-    fetch(process.env.HOSTNAME + '/api/videos/' + video_id + '/rate', {
+    fetch(process.env.HOST_NAME + '/api/videos/' + video_id + '/rate', {
         method: 'POST',
         body: JSON.stringify({
             rating: video_rating,

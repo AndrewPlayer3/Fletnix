@@ -7,7 +7,7 @@ export default function SearchBar({ liveSearch }) {
     const [input, setInput] = useState('');
 
     function onKeyUp(e) {
-        router.push(process.env.HOSTNAME + '/?text_query=' + input);
+        router.push(process.env.HOST_NAME + '/?text_query=' + input);
     }
 
     function onKeyDown(e) {
@@ -17,7 +17,7 @@ export default function SearchBar({ liveSearch }) {
     }
 
     function onSubmit(e) {
-        router.push(process.env.HOSTNAME + '/?text_query=' + input);
+        router.push(process.env.HOST_NAME + '/?text_query=' + input);
     }
 
     if (liveSearch) {

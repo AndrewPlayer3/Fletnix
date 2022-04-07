@@ -1,6 +1,6 @@
 export default async function queryVideos(context) {
 
-    let url = process.env.HOSTNAME + "/api/videos";
+    let url = process.env.HOST_NAME + "/api/videos";
 
     if (context.query.title) {
         url += "?text_query=" + context.query.title;

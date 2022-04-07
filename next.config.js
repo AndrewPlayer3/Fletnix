@@ -2,7 +2,7 @@
 module.exports = {
   reactStrictMode: true,
   env: {
-    HOSTNAME: process.env.HOSTNAME,                             // Domain being used e.g. http://localhost:3000 or https://fletnix.vercel.app
+    HOST_NAME: process.env.HOST_NAME,                           // Domain being used e.g. http://localhost:3000 or https://fletnix.vercel.app
     ALLOW_ROLES: process.env.ALLOW_ROLES,                       // User's can choose their own roles at signup, true or false
     MONGODB_URL: process.env.MONGODB_URL,                       // Authenticated URL pointing to the mongodb.
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,                     // This should be the same as HOSTNAME

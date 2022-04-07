@@ -9,14 +9,14 @@ export default function NavBar({ liveSearch }) {
     const [input, setInput] = useState('');
 
     function onKeyDown(e) {
-        router.push(process.env.HOSTNAME + '/?title=' + input);
+        router.push(process.env.HOST_NAME + '/?title=' + input);
         if (e.key === 'Enter') {
             onSubmit(e);
         }
     }
 
     function onSubmit(e) {
-        router.push(process.env.HOSTNAME + '/?title=' + input);
+        router.push(process.env.HOST_NAME + '/?title=' + input);
     }
 
     return (
@@ -30,7 +30,7 @@ export default function NavBar({ liveSearch }) {
                                     <div className='flex ml-1 items-center'>
                                         <img
                                             className="flex items-end justify-start bg-slate-200 rounded-md lg:block h-6 mx-1"
-                                            src={process.env.HOSTNAME + "/movie-film.png"}
+                                            src={process.env.HOST_NAME + "/movie-film.png"}
                                             alt="Logo"
                                         />
                                     </div>

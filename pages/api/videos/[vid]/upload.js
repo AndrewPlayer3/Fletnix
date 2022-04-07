@@ -69,20 +69,20 @@ export default async (req, res) => {
 
     const { vid } = req.query;
 
+    const user_res = await fetch(process.env.HOST_NAME + '/api/user', {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+            cookie: req.headers.cookie,
+        },
+    });
+    const user_data = await user_res.json();
+
+    if (!user_data.role.content_editor) {
+        return res.status(403).send({ error: 'Only Content Editors can Upload and Delete Videos.' });
+    }
+
     if (req.method == "POST") {
-
-        const user_res = await fetch(process.env.HOSTNAME + '/api/user', {
-            method: 'GET',
-            headers: {
-                "Content-Type": "application/json",
-                cookie: req.headers.cookie,
-            },
-        });
-        const user_data = await user_res.json();
-
-        if (!user_data.role.content_editor) {
-            return res.status(403).send({ error: 'Only Content Editors can Upload Videos.' });
-        }
 
         const { filetype, is_video } = JSON.parse(req.body);
 
@@ -100,19 +100,6 @@ export default async (req, res) => {
 
 
     } else if (req.method == "DELETE") {
-
-        const user_res = await fetch(process.env.HOSTNAME + '/api/user', {
-            method: 'GET',
-            headers: {
-                "Content-Type": "application/json",
-                cookie: req.headers.cookie,
-            },
-        });
-        const user_data = await user_res.json();
-
-        if (!user_data.role.content_editor) {
-            return res.status(403).send({ error: 'Only Content Editors can Delete Videos.' });
-        }
 
         const { filename, thumbnail } = JSON.parse(req.body);
 

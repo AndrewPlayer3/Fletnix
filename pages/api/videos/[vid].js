@@ -24,7 +24,7 @@ const handler = async (req, res) => {
     } else if (req.method == 'DELETE') {
 
         try {
-            const user_res = await fetch(process.env.HOSTNAME + '/api/user', {
+            const user_res = await fetch(process.env.HOST_NAME + '/api/user', {
                 method: 'GET',
                 headers: {
                     "Content-Type": "application/json",

@@ -45,7 +45,7 @@ export default function Content({ videos }) {
     // TODO: Add an "Are you sure?" prompt.
     const removeVideo = async (id) => {
 
-        const res = await fetch(process.env.HOSTNAME + "/api/videos/" + id, {
+        const res = await fetch(process.env.HOST_NAME + "/api/videos/" + id, {
             method: "DELETE",
         });
 
@@ -62,7 +62,7 @@ export default function Content({ videos }) {
         try {
                 const data = await res.json();
 
-                const removedres = await fetch(process.env.HOSTNAME + '/api/videos/' + id + '/upload', {
+                const removedres = await fetch(process.env.HOST_NAME + '/api/videos/' + id + '/upload', {
                     method: 'DELETE',
                     body: JSON.stringify({
                         filename: data.filename,

@@ -38,7 +38,7 @@ export default function UploadForm() {
         const is_video = type == "video";
         const file = is_video ? video : thumbnail;
 
-        const signedurl_res = await fetch(process.env.HOSTNAME + "/api/videos/" + id + "/upload", {
+        const signedurl_res = await fetch(process.env.HOST_NAME + "/api/videos/" + id + "/upload", {
             method: "POST",
             body: JSON.stringify({
                 filetype: file.type,
@@ -74,7 +74,7 @@ export default function UploadForm() {
 
                     console.log(JSON.stringify(values));
 
-                    const res = await fetch(process.env.HOSTNAME + '/api/videos', {
+                    const res = await fetch(process.env.HOST_NAME + '/api/videos', {
                         method: 'POST',
                         body: JSON.stringify({
                             redirect: false,
@@ -98,13 +98,13 @@ export default function UploadForm() {
                         
                         alert("There was an error uploading the video.");
                         
-                        const del_res = await fetch(process.env.HOSTNAME + '/api/videos/' + video_info._id, {
+                        const del_res = await fetch(process.env.HOST_NAME + '/api/videos/' + video_info._id, {
                             method: 'DELETE',
                         });
                         return;
                     } else {
                         
-                        const add_filenames = await fetch(process.env.HOSTNAME + '/api/videos/' + video_info._id, {
+                        const add_filenames = await fetch(process.env.HOST_NAME + '/api/videos/' + video_info._id, {
                             method: 'PATCH',
                             body: JSON.stringify({
                                 filename: video_loc,
