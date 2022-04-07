@@ -1,5 +1,3 @@
-import { IncomingForm } from 'formidable'
-
 
 async function getSignedURLForUpload(fileName) {
 
@@ -76,9 +74,9 @@ export default async (req, res) => {
 
         try {
             const url = await getSignedURLForUpload(filename);
-            return res.status(200).send({ success: true, upload_url: url, filename: filename});
+            return res.status(200).send({ success: true, upload_url: url, filename: filename });
         } catch (error) {
-            return res.status(500).send({ success: false, upload_url: "", filename: filename});
+            return res.status(500).send({ success: false, upload_url: "", filename: filename, error: error.message });
         }
     }
 }
