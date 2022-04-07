@@ -121,7 +121,7 @@ export default async (req, res) => {
             await deleteFromCloud(filename);
             return res.status(200).send({ success: true, filename: filename, thumbnail: thumbnail });
         } catch (error) {
-            return res.status(500).send({ success: false, filename: filename, thumbnail: thumbnail });
+            return res.status(500).send({ success: false, filename: filename, thumbnail: thumbnail, error: error.message });
         }
     }
 }

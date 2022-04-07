@@ -62,11 +62,14 @@ export default function Content({ videos }) {
         try {
                 const data = await res.json();
 
-                await fetch(process.env.HOSTNAME + '/api/videos/' + id + '/upload', {
+                const removedres = await fetch(process.env.HOSTNAME + '/api/videos/' + id + '/upload', {
                     method: 'DELETE',
                     filename: data.filename,
                     thumbnail: data.thumbnail
                 })
+                const removed = await removedres.json();
+
+                console.log(removed);
 
                 alert('Video has been removed.');
             } catch (error) {
