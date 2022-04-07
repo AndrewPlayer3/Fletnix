@@ -140,30 +140,35 @@ export default function SignUpForm({ csrfToken }) {
                                         <ErrorMessage name="confirmpassword" />
                                     </div>
                                 </div>
-                                <div>
-                                    <label className='text-[#223843]'>
-                                        <div className="flex">
-                                            <div className="mr-1">
-                                                <Field type="checkbox" name="content_editor" />
-                                            </div>
-                                            <div>
-                                                Content Editor
-                                            </div>
+                                {process.env.ALLOW_ROLES ?
+                                    <>
+                                        <div>
+                                            <label className='text-[#223843]'>
+                                                <div className="flex">
+                                                    <div className="mr-1">
+                                                        <Field type="checkbox" name="content_editor" />
+                                                    </div>
+                                                    <div>
+                                                        Content Editor
+                                                    </div>
+                                                </div>
+                                            </label>
                                         </div>
-                                    </label>
-                                </div>
-                                <div className='mb-4'>
-                                    <label className='text-[#223843]'>
-                                        <div className="flex">
-                                            <div className="mr-1">
-                                                <Field type="checkbox" name="content_manager" />
-                                            </div>
-                                            <div>
-                                                Content Manager
-                                            </div>
+                                        <div className='mb-4'>
+                                            <label className='text-[#223843]'>
+                                                <div className="flex">
+                                                    <div className="mr-1">
+                                                        <Field type="checkbox" name="content_manager" />
+                                                    </div>
+                                                    <div>
+                                                        Content Manager
+                                                    </div>
+                                                </div>
+                                            </label>
                                         </div>
-                                    </label>
-                                </div>
+                                    </>
+                                    : <></>
+                                }
                                 <div className="flex items-center justify-center">
                                     <button
                                         type="submit"
