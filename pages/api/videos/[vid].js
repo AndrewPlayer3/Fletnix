@@ -37,9 +37,13 @@ const handler = async (req, res) => {
                 return res.status(403).send({ removed: false, error: 'Only Content Editors can Remove Videos.' });
             }
 
-            const video_removed = await Video.deleteOne({ _id: vid });
+            const video = await Video.findById({ _id: vid });
 
-            return res.status(200).send({ removed: true, message: 'video removed successfully', output: video_removed });
+            const { filename, thumbnail } = video;
+
+            await Video.deleteOne({ _id: vid });
+
+            return res.status(200).send({ removed: true, message: 'video removed successfully', filename: filename, thumbnail: thumbnail });
         } catch (error) {
             return res.status(500).send({ removed: false, id: vid, message: error.message });
         }
