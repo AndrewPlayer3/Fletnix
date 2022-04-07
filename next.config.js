@@ -2,6 +2,7 @@
 module.exports = {
   reactStrictMode: true,
   env: {
+    HOSTNAME: 'https://fletnix.vercel.app',
     mongodburl: process.env.mongodburl,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     JWT_SECRET: process.env.JWT_SECRET,
