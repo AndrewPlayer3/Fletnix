@@ -14,9 +14,14 @@ export default function ProfileMenu() {
 
     let MenuItem;
 
+    const role = {
+        content_editor: session.user.role.content_editor ?? false,
+        content_manager: session.user.role.content_manager ?? false
+    }
+
     if (isLoggedIn) {
         MenuItem = <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 backdrop-blur-2xl bg-slate-900 bg-opacity-70 border border-opacity-25 border-slate-200 ring-1 ring-black ring-opacity-5 z-50 focus:outline-none">
-            {session.user.role.content_editor || session.user.role.content_manager ?
+            {role.content_editor || role.content_manager ?
                 <Menu.Item>
                     {({ active }) => (
                         <a
