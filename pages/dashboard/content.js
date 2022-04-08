@@ -1,6 +1,7 @@
 import Sidebar from "../../components/common/Sidebar/Sidebar";
 import Layout from "../../components/Layout.js"
 import UploadForm from "../../components/UploadForm"
+import ContentPanel from "../../components/ContentPanel";
 import { useSession } from 'next-auth/react'
 import videoQuery from '../api/helpers/video_query'
 import loginStatus from '../../helpers/login-status'
