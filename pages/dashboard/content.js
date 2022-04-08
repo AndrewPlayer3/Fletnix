@@ -3,6 +3,7 @@ import Layout from "../../components/Layout.js"
 import UploadForm from "../../components/UploadForm"
 import ContentPanel from "../../components/ContentPanel";
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 import videoQuery from '../api/helpers/video_query'
 import loginStatus from '../../helpers/login-status'
 
@@ -20,6 +21,7 @@ export async function getServerSideProps(context) {
 export default function Content({ videos }) {
 
     const { data: session, status } = useSession();
+    const router = useRouter();
 
     return (
         <>
