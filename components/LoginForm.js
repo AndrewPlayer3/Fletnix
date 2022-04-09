@@ -24,7 +24,7 @@ export default function LoginForm({ csrfToken }) {
             callbackUrl: `${window.location.origin}`,
           });
           if (res?.error) {
-            setError(res.error);
+            setError('Invalid Username or Password');
           } else {
             setError(null);
           }
