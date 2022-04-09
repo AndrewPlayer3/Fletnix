@@ -8,16 +8,18 @@ const handler = async (req, res) => {
     if (req.method === 'GET') {  // Retrieve Video Information | TODO: Restrict these requests to any logged-in user.
 
         try {
-            const query_results = await Video.findById(vid);
+            var query_results = await Video.findById(vid);
 
             if (query_results) {
                 return res.status(200).send({ success: true, video: query_results, id: vid });
             } else {
-                return res.status(404).send({ success: false, video: {}, id: vid});
+                query_results = {}
+                return res.status(404).send({ success: false, video: query_results, id: vid});
             }
 
         } catch (error) {
-            return res.status(500).send({ success: false, video: {}, id: vid, error: error.message })
+            query_results = {}
+            return res.status(500).send({ success: false, video: query_results, id: vid, error: error.message })
         }
 
 
