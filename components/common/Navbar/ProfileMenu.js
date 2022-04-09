@@ -15,8 +15,8 @@ export default function ProfileMenu() {
     let MenuItem;
 
     const role = {
-        content_editor: session.user.role.content_editor ?? false,
-        content_manager: session.user.role.content_manager ?? false
+        content_editor: isLoggedIn ? (session.user.role.content_editor ?? false) : false,
+        content_manager: isLoggedIn ? (session.user.role.content_manager ?? false) : false
     }
 
     if (isLoggedIn) {
