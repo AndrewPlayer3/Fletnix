@@ -12,7 +12,7 @@ export default function ProfilePage() {
     return (
         <>
             {loginStatus(status, router) ?
-                <div className='absolute w-2/4 h-2/4 left-1/4 top-1/4'>
+                <div className='absolute w-3/5 h-3/5 left-1/5 top-24'>
                     <Profile user={session.user} />
                 </div>
                 :

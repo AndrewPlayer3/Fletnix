@@ -15,8 +15,15 @@ module.exports = {
         '1/10': '10%'
       },
       screens: {
+        '3xl': '2000px',
         'tablet': { 
           'max': '1000px'
+        },
+        'xs': {
+          'max': '576px'
+        },
+        'xxs': {
+          'max': '476px'
         },
         ...defaultTheme.screens,
       }
