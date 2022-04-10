@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router'
 
 
-export default function ContentPanel({ videos, role }) {
+export default function ContentPanel({ videos, role, className}) {
     
     const router = useRouter();
 
@@ -63,102 +63,98 @@ export default function ContentPanel({ videos, role }) {
 
         router.push('/dashboard/content');
     };
- 
+
+    const classes = className + 'table-auto' ?? "table-auto bg-slate-200 rounded-lg"
+    
     return (
-        <div>
+        <div>  
             {videos.length !== 0 ?
-                <div className="w-full bg-slate-200 my-16 overflow-x-auto shadow-md sm:rounded-lg">
-                    <table className="w-full divide-y divide-slate-700 text-sm text-left text-gray-500 dark:text-gray-400">
-                        <thead>
-                            <tr>
-                                <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                    #
+                <table className={classes}>
+                    <thead>
+                        <tr className='border-b border-solid border-slate-900 text-left text-sm font-bold text-slate-900 w-full'>
+                            <th scope="col" className='pl-4 pr-2 pt-2 pb-1 xxs:pl-2'>
+                                Video
+                            </th>
+                            <th scope="col" className='flex shrink pt-2 pb-1 w-1/5'>
+                                Title
+                            </th>
+                            {role.content_manager ?
+                                <>
+                                    <th scope="col" className='pt-2 pb-1 px-2 xs:px-4'>
+                                        Views
+                                    </th>
+                                    <th scope="col" className='pt-2 pb-1 px-2'>
+                                        Rating
+                                    </th>
+                                </>
+                                :
+                                <></>
+                            }
+                            <th scope="col" className='pt-2 pb-1 px-2 xxs:hidden'>
+                                Date
+                            </th>
+                            {role.content_editor ?
+                                <th scope="col" className='pt-2 pb-1 px-2'>
+                                    Delete 
                                 </th>
-                                <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                    Video
+                                :
+                                <></>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {videos.map((video) => (
+                            <tr key={video._id} className='border-t border-t-solid border-t-slate-400 text-left'>
+                                <th scope='row' className="pl-4 pr-2 pt-2 xxs:pl-2">
+                                    <Image
+                                        layout='fixed'
+                                        height='45'
+                                        width='80'
+                                        src={process.env.GOOGLE_STORAGE + video.thumbnail}
+                                        className="rounded-md"
+                                    />
+                                    {/* <div className='absolute bottom-1 right-0'>
+                                        <p className='text-xs bg-opacity-50 rounded-sm rounded-br-md bg-slate-800 font-bold text-[#C8C8C8]'>{fancyTimeFormat(video.metadata.length)}</p>
+                                    </div> */}
                                 </th>
+                                <td className="w-80">
+                                    <div className='text-ellipsis whitespace-nowrap overflow-auto'>
+                                        <p className="font-medium text-slate-900 w-32">{video.title}</p>
+                                        <p className="text-slate-500 w-32">{video.description}</p>
+                                    </div>
+                                </td>
                                 {role.content_manager ?
                                     <>
-                                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Views
-                                        </th>
-                                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left max-length-3">
-                                            Rating
-                                        </th>
+                                        <td className="text-sm text-gray-900 font-light px-2 xs:px-4">
+                                            {video.analytics.views}
+                                        </td>
+                                        <td className="text-sm text-gray-900 font-light px-2">
+                                            {video.analytics.total_rating / video.analytics.num_ratings}
+                                        </td>
                                     </>
                                     :
                                     <></>
                                 }
-                                <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                    Date
-                                </th>
+                                <td className="text-sm text-gray-900 font-light px-2 truncate xxs:hidden">
+                                    {video.created_at.substring(0, 10)}
+                                </td>
                                 {role.content_editor ?
-                                    <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        Delete forever
-                                    </th>
+                                    <td className="text-sm text-gray-900 font-light px-2">
+                                        <a onClick={async () => removeVideo(video._id)} className="flex flex-row text-red-600  hover:underline hover:cursor-pointer">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}> <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /> </svg>
+                                            <span>Delete</span>
+                                        </a>
+                                    </td>
                                     :
                                     <></>
                                 }
+                                <p className='pr-4 xxs:pr-2'></p>
                             </tr>
-                        </thead>
-                        <tbody className="divide-y divide-slate-700">
-                            {videos.map((video, i) => (
-                                <tr key={video._id} >
-                                    <td className="text-sm text-gray-900 font-medium px-6 whitespace-nowrap">
-                                        {i + 1}
-                                    </td>
-                                    <td className="text-sm max-w-xs text-gray-900 font-light px-6 py-2 whitespace-nowrap">
-                                        <div className="flex justify-between items-start">
-                                            <div className="relative w-1/3">
-                                                <Image
-                                                    layouts='fill'
-                                                    src={process.env.GOOGLE_STORAGE + video.thumbnail}
-                                                    height='1080'
-                                                    width='1920'
-                                                    className="rounded-md"
-                                                />
-                                                <div className='absolute bottom-1 right-0'>
-                                                    <p className='w-full text-xs bg-black font-bold text-[#C8C8C8]'>{fancyTimeFormat(video.metadata.length)}</p>
-                                                </div>
-                                            </div>
-                                            <div className="w-2/3 ml-1 pl-2">
-                                                <h3 className="font-medium text-black overflow-hidden hover:overflow-visible text-ellipsis">{video.title}</h3>
-                                                <p className="text-ellipsis overflow-hidden">{video.description}</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    {role.content_manager ?
-                                        <>
-                                            <td className="text-sm text-gray-900 font-light px-6 whitespace-nowrap">
-                                                {video.analytics.views}
-                                            </td>
-                                            <td className="text-sm text-gray-900 font-light px-6 whitespace-nowrap">
-                                                {video.analytics.total_rating / video.analytics.num_ratings}
-                                            </td>
-                                        </>
-                                        :
-                                        <></>
-                                    }
-                                    <td className="text-sm text-gray-900 font-light px-6 whitespace-nowrap ">
-                                        {video.created_at.substring(0, 10)}
-                                    </td>
-                                    {role.content_editor ?
-                                        <td className="text-sm text-gray-900 font-light px-6 whitespace-nowrap">
-                                            <a onClick={async () => removeVideo(video._id)} className="flex items-center text-red-600  hover:underline hover:cursor-pointer">
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}> <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /> </svg>
-                                                <span>Delete</span>
-                                            </a>
-                                        </td>
-                                        :
-                                        <></>
-                                    }
-                                </tr>
-                            ))}
+                        ))}
 
-                        </tbody>
-                    </table>
-                </div>
-                : <h1 className="mt-12 text-2xl">No videos to display.</h1>
+                    </tbody>
+                </table>
+            : <h1 className="mt-12 text-2xl">No videos to display.</h1>
             }
         </div>
     )

@@ -18,6 +18,12 @@ module.exports = {
         'tablet': { 
           'max': '1000px'
         },
+        'xs': {
+          'max': '576px'
+        },
+        'xxs': {
+          'max': '476px'
+        },
         ...defaultTheme.screens,
       }
     },

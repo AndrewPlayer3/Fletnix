@@ -3,7 +3,7 @@ import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 
-export default function UploadForm() {
+export default function UploadForm({ className }) {
 
     const [thumbnail, setThumbnail] = useState(null);
     const [video, setVideo] = useState(null);
@@ -60,8 +60,11 @@ export default function UploadForm() {
         return signedurl_data.filename 
     };
 
+    var classes = className ?? 'bg-slate-200 rounded-b-lg '
+    classes += ' flex flex-col items-center justify-center'
+
     return (
-        <div className="flex h-full items-center justify-center">
+        <>
             <Formik
                 initialValues={{ title: '', description: '', tags: '', video_length: '' }}
                 validationSchema={Yup.object({
@@ -122,8 +125,8 @@ export default function UploadForm() {
             >
                 {(formik) => (
                     <form onSubmit={formik.handleSubmit}>
-                        <div className="flex flex-col items-center justify-center py-2 bg-slate-200 rounded-b-lg ">
-                            <div className="px-8 pt-6 pb-8">
+                        <div className={classes}>
+                            <div className="px-4 pt-4 pb-4">
                                 <div className="mb-4">
                                     <label
                                         htmlFor="title"
@@ -225,6 +228,6 @@ export default function UploadForm() {
                     </form>
                 )}
             </Formik>
-        </div>
+        </>
     );
 }

@@ -13,14 +13,14 @@ export default function Dashboard() {
     return (
         <>
             {loginStatus(status, router) ?
-                <div className="flex flex-col items-center justify-center md:flex-row">
-                    <div className="relative">
-                        <Sidebar />
-                    </div>
-                    <div id="myTabContent" className="absolute w-2/4 h-2/4 left-1/4 top-1/5">
-                        <Profile user={session.user} />
-                    </div>
+                <>
+                <div className="relative">
+                    <Sidebar />
                 </div>
+                <div id="myTabContent" className="absolute w-2/4 h-2/4 left-1/4 top-1/5">
+                    <Profile user={session.user} />
+                </div>
+                </>
                 :
                 <></>
             }
