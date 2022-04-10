@@ -1,4 +1,3 @@
-import Sidebar from "../components/common/Sidebar/Sidebar";
 import Layout from "../components/Layout.js"
 import UploadForm from "../components/UploadForm"
 import ContentPanel from "../components/ContentPanel";
