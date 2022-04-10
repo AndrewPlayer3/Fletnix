@@ -90,7 +90,7 @@ export default function ContentPanel({ videos, role, className}) {
                                 :
                                 <></>
                             }
-                            <th scope="col" className='pt-2 pb-1 px-2 xxs:hidden'>
+                            <th scope="col" className='pt-2 pb-1 px-2 xs:hidden'>
                                 Date
                             </th>
                             {role.content_editor ?
@@ -135,7 +135,7 @@ export default function ContentPanel({ videos, role, className}) {
                                     :
                                     <></>
                                 }
-                                <td className="text-sm text-gray-900 font-light px-2 truncate xxs:hidden">
+                                <td className="text-sm text-gray-900 font-light px-2 truncate xs:hidden">
                                     {video.created_at.substring(0, 10)}
                                 </td>
                                 {role.content_editor ?
@@ -148,7 +148,7 @@ export default function ContentPanel({ videos, role, className}) {
                                     :
                                     <></>
                                 }
-                                <p className='pr-4 xxs:pr-2'></p>
+                                <p className='pr-4 xs:pr-2'></p>
                             </tr>
                         ))}
 
