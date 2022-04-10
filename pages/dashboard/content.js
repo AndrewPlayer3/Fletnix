@@ -30,7 +30,7 @@ export default function Content({ videos }) {
             <div className='fixed tablet:hidden'>
                 <Sidebar />
             </div>
-            <div className="flex flex-col items-center m-auto xs:w-screen">
+            <div className="flex flex-col items-center m-auto">
                 {session.user.role.content_editor ?
                     <>
                     <UploadForm className='bg-slate-200 rounded-b-lg shadow-xl' />
