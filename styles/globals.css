@@ -31,13 +31,13 @@
     }
 
     .navbar {
-        @apply border-b border-solid border-b-[#2F013F]
+        @apply border-b border-solid border-b-[#2F013F] shadow-md shadow-[#3F015F]
     }
 
     .search_bar {
         @apply relative flex items-center justify-center min-w-0  w-full px-3 py-1.5 text-stone-100 font-normal bg-stone-900;
         @apply bg-opacity-20 rounded-lg border border-solid border-[#2F013F] transition ease-in-out mr-1 m-0 focus:text-stone-100;
-        @apply hover:border-[#3F015F] focus:border-stone-800 focus:outline-none;
+        @apply hover:border-[#3F015F] focus:border-[#3F015F] focus:outline-none;
     }
 
     .search_button {
@@ -105,7 +105,7 @@
     }
 
     .video_info_box {
-        @apply rounded-lg shadow-2xl border border-opacity-90 border-[#2F013F]
+        @apply rounded-lg shadow-2xl shadow-[#2F015F] border border-opacity-90 border-[#2F013F]
     }
 
 }
