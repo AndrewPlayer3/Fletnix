@@ -70,14 +70,14 @@ export default function Home({ title, location, thumbnail, description, vid }) {
                 </div>
                 :
                 <>
-                    <div className="absolute flex justify-center w-screen top-14 z-10">
+                    <div className="absolute flex justify-center w-screen top-14 -z-10">
                         <LoginForm />
                     </div>
                     <div className="flex-col w-screen h-screen">
-                        <div className='top-0 w-screen z-30'>
+                        <div className='top-0 w-screen z-40'>
                             <Navbar liveSearch={false} />
                         </div>
-                        <div className="relative blur-xl min-w-min lg:w-3/5 lg:h-3/5 lg:left-1/5 pt-8 tablet:w-6/6 tablet:h-6/6">
+                        <div className="relative blur-xl min-w-min lg:w-3/5 lg:h-3/5 lg:left-1/5 pt-8 tablet:w-6/6 tablet:h-6/6 -z-30">
                             <Image layout='responsive' height={90} width={160} src={thumbnail} />
                             <div className='mt-4 video_info_box'>
                                 <div className='flex h-auto w-auto title-and-rating mt-4'>

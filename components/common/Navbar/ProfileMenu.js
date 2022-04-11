@@ -89,10 +89,10 @@ export default function ProfileMenu() {
         <>
             {(videos && login && !isLoggedIn) ?
                 <>
-                    <div className='absolute transition delay-50 top-14 m-auto z-30'>
+                    <div className='absolute transition delay-50 top-14 m-auto -z-10'>
                         <LoginForm />
                     </div>
-                    <div onClick={() => setLogin(false)} className='absolute top-14 w-screen h-screen theme_color opacity-70'></div>
+                    <div onClick={() => setLogin(false)} className='absolute top-14 w-screen h-screen theme_color opacity-70 -z-30'></div>
                 </>
                 :
                 <></>
