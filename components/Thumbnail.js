@@ -14,9 +14,9 @@ export default function Thumbnail({ result }) {
                 {/* Each Video Thumbnail display/ Display default thumbnail if there is none in db */}
                 <div>
                     <Link href={{ pathname: '/videos/' + result['_id'] }}>
-                        <div className='rounded-md bg-gradient-to-tr from-transparent via-transparent to-purple-900 p-0.5 -skew-x-2 hover:bg-purple-900'>
-                            <div className='rounded-md bg-gradient-to-tr from-transparent via-transparent to-purple-800 p-0.5 hover:bg-purple-800'>
-                                <div className='relative flex h-auto w-auto rounded-md bg-gradient-to-tr from-transparent via-transparent to-purple-700 p-0.5 hover:bg-purple-700 shadow-md hover:shadow-2xl shadow-purple-900'>
+                        <div className='rounded-md bg-gradient-to-tr from-transparent via-transparent to-[#4A019F] p-0.5 -skew-x-2 hover:bg-[#4A019F]'>
+                            <div className='rounded-md bg-gradient-to-tr from-transparent via-transparent to-[#4A017F] p-0.5 hover:bg-[#4A017F]'>
+                                <div className='relative flex h-auto w-auto rounded-md bg-gradient-to-tr from-transparent via-transparent to-[#4A015F] p-0.5 hover:bg-[#4A015F] shadow-sm hover:shadow-2xl shadow-[#4A017F]'>
                                     <Image
                                         layouts='fill'
                                         src={thumb_url}
