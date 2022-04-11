@@ -71,7 +71,7 @@ export default function ProfileMenu() {
         </Menu.Items>
     }
     else {
-        MenuItem = <Menu.Items className="origin-top-right absolute right-0 mt-4 w-48 py-1 user_menu">
+        MenuItem = <Menu.Items className="origin-top-right absolute right-0 w-24 py-1 user_menu">
             <Menu.Item>
                 {({ active }) => (
                     <a
