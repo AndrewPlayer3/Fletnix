@@ -122,7 +122,7 @@ export default function UploadForm({ className }) {
             >
                 {(formik) => (
                     <form onSubmit={formik.handleSubmit}>
-                        <div className='form'>
+                        <div className='shadow-lg shadow-[#4A017F] form'>
                             <div className="px-4 pt-4 pb-4">
                                 <div className="mb-4">
                                     <label

@@ -31,19 +31,19 @@
     }
 
     .navbar {
-        @apply border-b border-solid border-b-[#2F013F] shadow-md shadow-[#3F015F]
+        @apply border-b border-solid border-b-[#2F013F] shadow-sm shadow-[#4A017F]
     }
 
     .search_bar {
         @apply relative flex items-center justify-center min-w-0  w-full px-3 py-1.5 text-stone-100 font-normal bg-stone-900;
-        @apply bg-opacity-20 rounded-lg border border-solid border-[#2F013F] transition ease-in-out mr-1 m-0 focus:text-stone-100;
-        @apply hover:border-[#3F015F] focus:border-[#3F015F] focus:outline-none;
+        @apply bg-opacity-20 rounded-lg border border-opacity-0 border-[#3F015F] transition ease-in-out mr-1 m-0 focus:text-stone-100;
+        @apply hover:border-[#4A017F] shadow-sm shadow-[#4A017F] focus:border-[#4A017F] focus:outline-none;
     }
 
     .search_button {
         @apply tablet:hidden rounded-lg px-4 py-2.5 bg-stone-900 bg-opacity-20 text-stone-100 font-medium text-xs leading-tight uppercase;
-        @apply shadow-md border border-solid border-[#2F013F] hover:border hover:border-[#3F015F];
-        @apply hover:shadow-lg focus:shadow-lg focus:ring-0  transition duration-150 ease-in-out flex items-center;
+        @apply border border-opacity-0 border-[#2F013F] hover:border hover:border-[#4A017F];
+        @apply shadow-sm shadow-[#4A017F] focus:ring-0  transition duration-150 ease-in-out flex items-center;
     }
 
     .footer {
@@ -51,21 +51,21 @@
     }
 
     .footer_button {
-        @apply rounded-md  bg-gradient-to-tr from-stone-900 via-[#1F013F] to-stone-900 border border-solid border-[#1F013F]
+        @apply rounded-md  bg-gradient-to-bl from-stone-800 via-[#4A015F] to-[#4A015F] border border-solid border-[#4A017F]
     }
 
     .form {
-        @apply rounded-b-lg bg-gradient-to-b from-stone-100 via-stone-200 to-stone-100 bg-opacity-95 shadow-xl drop-shadow-xl border border-solid border-stone-900
+        @apply rounded-b-lg bg-gradient-to-b from-stone-100 via-stone-200 to-stone-100 bg-opacity-95 shadow-xl drop-shadow-xl border border-solid border-[#4A017F]
     }
 
     .form_button {
-        @apply uppercase shadow-md text-sm font-medium tracking-wide whitespace-nowrap bg-gradient-to-tr from-[#1F015A] via-[#1F013A] to-[#1F013A] text-stone-100 p-3 rounded-lg;
-        @apply w-full hover:shadow-2xl hover:drop-shadow-2xl hover:scale-100  transition duration-150 border border-solid border-stone-700
+        @apply uppercase shadow-md text-sm font-medium tracking-wide whitespace-nowrap bg-gradient-to-tr from-[#4A017A] via-[#4A015A] to-[#4A015A] text-stone-100 p-3 rounded-lg;
+        @apply w-full hover:shadow-md hover:drop-shadow-md hover:scale-100  transition duration-150 border border-solid border-stone-700
     }
 
     .form_button_alt {
         @apply uppercase shadow-md text-sm font-medium mx-2 tracking-wide whitespace-nowrap bg-gradient-to-tr from-stone-800 via-stone-900 to-stone-900 text-stone-100 p-3 rounded-lg;
-        @apply w-full hover:shadow-2xl hover:drop-shadow-2xl hover:border hover:scale-100 transition duration-150 border border-solid border-stone-700
+        @apply w-full hover:shadow-md hover:drop-shadow-md hover:border hover:scale-100 transition duration-150 border border-solid border-stone-700
     }
 
     .form_text {
@@ -81,7 +81,7 @@
     }
 
     .content_panel_editor {
-        @apply shadow-xl drop-shadow-xl border border-solid border-stone-100 rounded-xl bg-stone-100
+        @apply shadow-lg shadow-[#4F017F] border border-solid border-[#4A017F] rounded-xl bg-stone-100
     }
 
     .content_panel_header_text {
@@ -97,15 +97,19 @@
     }
 
     .user_menu_options {
-        @apply bg-stone-800
+        @apply bg-stone-800 cursor-pointer
     }
 
     .user_menu_text {
-        @apply block px-4 py-2 text-sm font-light text-stone-100
+        @apply block px-4 py-2 text-sm font-medium text-stone-100
+    }
+
+    .video_glow {
+        @apply shadow-sm shadow-[#47017F]
     }
 
     .video_info_box {
-        @apply rounded-lg shadow-2xl shadow-[#2F015F] border border-opacity-90 border-[#2F013F]
+        @apply rounded-lg bg-gradient-to-b from-transparent via-transparent to-transparent shadow-sm shadow-[#2F015F] border border-opacity-90 border-[#2F013F]
     }
 
 }

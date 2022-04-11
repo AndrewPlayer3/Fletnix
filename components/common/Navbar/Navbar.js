@@ -21,7 +21,7 @@ export default function NavBar({ liveSearch }) {
     }
 
     return (
-        <div as="nav" className="navbar">
+        <div as="nav" className="z-40 navbar">
             <div className="max-w-7xl mx-auto ">
                 <div className="flex h-14 items-center justify-center">
                     <div className="flex items-center justify-start sm:mr-6 sm:items-stretch sm:justify-start">
