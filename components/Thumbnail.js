@@ -10,26 +10,31 @@ export default function Thumbnail({ result }) {
 
     return (
         <div className=''>
-            <div className='block m-2 cursor-pointer'>
+            <div className='block my-3 cursor-pointer transition ease-in-out hover:scale-95 focus:animate-ping'>
                 {/* Each Video Thumbnail display/ Display default thumbnail if there is none in db */}
                 <div>
                     <Link href={{ pathname: '/videos/' + result['_id'] }}>
-                        <div className='relative flex h-auto w-auto rounded-md drop-shadow-2xl transition ease-in-out delay-50 hover:scale-105 hover:rotate-1'>
-                            <Image
-                                layouts='fill'
-                                src={thumb_url}
-                                height='720px'
-                                width='1280px'
-                                className="rounded-md"
-                            />
-                            <div className='absolute bottom-0 right-0 opacity-70'>
-                                <DisplayRating rating={rating} />
+                        <div className='rounded-md bg-gradient-to-tr from-transparent via-transparent to-purple-900 p-0.5 -skew-x-2'>
+                            <div className='rounded-md bg-gradient-to-tr from-transparent via-transparent to-purple-800 p-0.5'>
+                                <div className='relative flex h-auto w-auto rounded-md bg-gradient-to-tr from-transparent via-transparent to-purple-700  p-0.5 '>
+                                    <Image
+                                        layouts='fill'
+                                        src={thumb_url}
+                                        height='720px'
+                                        width='1280px'
+                                        className="rounded-md hover:opacity-90"
+                                    />
+                                    <div className='absolute bottom-0 right-1 -skew-x-3 rounded-md opacity-100'>
+                                        <DisplayRating rating={rating} />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </Link>
                 </div>
-                <p className='pt-1 font-sans font-bold text-[#EFF1F3]'>{result['title']}</p>
+                <a href={'/videos/' + result['_id']} className='pl-1 font-sans font-medium shadow-inset-xl text-[#EFF1F3]'>{result['title']}</a>
             </div>
         </div>
     )
 }
+// border-x-[#13013A] border-stone-900 to-[#13014A]
