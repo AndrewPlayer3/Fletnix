@@ -14,9 +14,9 @@ export default function Thumbnail({ result }) {
                 {/* Each Video Thumbnail display/ Display default thumbnail if there is none in db */}
                 <div>
                     <Link href={{ pathname: '/videos/' + result['_id'] }}>
-                        <div className='rounded-md bg-gradient-to-tr from-transparent via-transparent to-indigo-800 p-0.5 -skew-x-3'>
-                            <div className='rounded-md bg-gradient-to-tr from-transparent via-transparent to-[#13019A] p-0.5'>
-                                <div className='relative flex h-auto w-auto rounded-md bg-gradient-to-tr from-transparent via-transparent to-[#13017A]  p-0.5 '>
+                        <div className='rounded-md bg-gradient-to-tr from-transparent via-transparent to-purple-900 p-0.5 -skew-x-2'>
+                            <div className='rounded-md bg-gradient-to-tr from-transparent via-transparent to-purple-800 p-0.5'>
+                                <div className='relative flex h-auto w-auto rounded-md bg-gradient-to-tr from-transparent via-transparent to-purple-700  p-0.5 '>
                                     <Image
                                         layouts='fill'
                                         src={thumb_url}
@@ -24,7 +24,7 @@ export default function Thumbnail({ result }) {
                                         width='1280px'
                                         className="rounded-md hover:opacity-90"
                                     />
-                                    <div className='absolute bottom-0 right-0 opacity-70'>
+                                    <div className='absolute bottom-0 right-1 -skew-x-3 rounded-md opacity-100'>
                                         <DisplayRating rating={rating} />
                                     </div>
                                 </div>
@@ -37,4 +37,4 @@ export default function Thumbnail({ result }) {
         </div>
     )
 }
-// border-x-[#13013A] border-stone-900
+// border-x-[#13013A] border-stone-900 to-[#13014A]
