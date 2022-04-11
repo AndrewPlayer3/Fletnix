@@ -31,7 +31,7 @@
     }
 
     .navbar {
-        @apply border border-solid border-stone-900
+        @apply border-b border-solid border-b-[#2F013F]
     }
 
     .search_bar {
