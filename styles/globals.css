@@ -6,7 +6,7 @@
 
     /* General Background Styles */
     body {
-        @apply bg-gradient-to-l from-stone-900 via-[#13014D] to-stone-900 scroll-smooth
+        @apply bg-gradient-to-l from-stone-900 via-[#13014D] to-stone-900 scroll-smooth font-body
     }
 
     /* Hide scrollbars without removing functionality */

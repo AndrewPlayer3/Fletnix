@@ -28,5 +28,8 @@ module.exports = {
         ...defaultTheme.screens,
       }
     },
+    fontFamily: {
+      'body': 'Roboto'
+    }
   },
 }
