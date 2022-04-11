@@ -38,7 +38,7 @@ export default function LoginForm({ csrfToken, pushHome, login, setLogin }) {
       >
         {(formik) => (
           <form onSubmit={formik.handleSubmit}>
-            <div className="form  border border-solid border-stone-900 flex flex-col items-center justify-center py-2">
+            <div className="form border-t-4 border-stone-200 flex flex-col items-center justify-center py-2">
               <div className="px-8 pt-6 pb-4 mb-4">
                 <input
                   name="csrfToken"

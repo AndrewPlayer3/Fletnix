@@ -37,13 +37,13 @@
     .search_bar {
         @apply relative flex items-center justify-center min-w-0  w-full px-3 py-1.5 text-stone-100 font-normal bg-stone-900;
         @apply bg-opacity-10 rounded-lg border border-solid border-stone-900 transition ease-in-out mr-1 m-0 focus:text-stone-100;
-        @apply hover:border-stone-800 focus:border-stone-800 focus:outline-none;
+        @apply hover:border-stone-700 focus:border-stone-800 focus:outline-none;
     }
 
     .search_button {
         @apply tablet:hidden rounded-lg px-6 py-2.5 bg-stone-900 bg-opacity-10 text-stone-100 font-medium text-xs leading-tight uppercase;
         @apply shadow-md border border-solid border-stone-900 hover:border hover:border-stone-800;
-        @apply hover:shadow-lg focus:bg-slate-500 focus:shadow-lg focus:ring-0  transition duration-150 ease-in-out flex items-center;
+        @apply hover:shadow-lg focus:shadow-lg focus:ring-0  transition duration-150 ease-in-out flex items-center;
     }
 
     .footer {
@@ -55,17 +55,17 @@
     }
 
     .form {
-        @apply rounded-b-lg bg-gradient-to-b from-stone-100 via-stone-200 to-stone-100 bg-opacity-95 shadow-xl drop-shadow-xl border border-solid border-slate-900
+        @apply rounded-b-lg bg-gradient-to-b from-stone-100 via-stone-200 to-stone-100 bg-opacity-95 shadow-xl drop-shadow-xl border border-solid border-stone-900
     }
 
     .form_button {
-        @apply uppercase shadow-md text-sm font-medium tracking-wide bg-gradient-to-tr from-[#13013A] via-[#13015A] to-[#13017A] text-stone-100 p-3 rounded-lg;
-        @apply w-full hover:shadow-lg hover:scale-100  transition duration-150 border border-solid border-stone-700
+        @apply uppercase shadow-md text-sm font-medium tracking-wide whitespace-nowrap bg-gradient-to-tr from-[#13013A] via-[#13015A] to-[#13015A] text-stone-100 p-3 rounded-lg;
+        @apply w-full hover:shadow-2xl hover:drop-shadow-2xl hover:scale-100  transition duration-150 border border-solid border-stone-700
     }
 
     .form_button_alt {
-        @apply uppercase shadow-md text-sm font-medium mx-2 tracking-wide bg-gradient-to-tr from-stone-900 via-stone-800 to-stone-700 text-stone-100 p-3 rounded-lg;
-        @apply w-full hover:shadow-lg hover:border hover:scale-100 transition duration-150 border border-solid border-stone-700
+        @apply uppercase shadow-md text-sm font-medium mx-2 tracking-wide whitespace-nowrap bg-gradient-to-tr from-stone-900 via-stone-800 to-stone-700 text-stone-100 p-3 rounded-lg;
+        @apply w-full hover:shadow-2xl hover:drop-shadow-2xl hover:border hover:scale-100 transition duration-150 border border-solid border-stone-700
     }
 
     .form_text {
