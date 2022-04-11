@@ -2,8 +2,10 @@ export default async function queryVideos(context) {
 
     let url = process.env.HOST_NAME + "/api/videos";
 
-    if (context.query.title) {
-        url += "?text_query=" + context.query.title;
+    let c = context ?? { query: { title: '' } };
+
+    if (c.query.title) {
+        url += "?text_query=" + c.query.title;
     }
 
     const res = await fetch(url, {

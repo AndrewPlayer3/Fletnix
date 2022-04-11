@@ -6,7 +6,7 @@
 
     /* General Background Styles */
     body {
-        @apply bg-gradient-to-l from-slate-900 via-slate-800 to-slate-900 backdrop-blur-lg scroll-smooth
+        @apply bg-gradient-to-l from-slate-900 via-slate-800 to-slate-900 scroll-smooth
     }
 
     /* Hide scrollbars without removing functionality */

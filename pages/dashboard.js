@@ -24,26 +24,26 @@ export default function Content({ videos }) {
 
     return (
         <>
-        {loginStatus(status, router) ?
-        <>
-            <div className="flex flex-col items-center m-auto">
-                {session.user.role.content_editor ?
-                    <>
-                    <UploadForm className='bg-slate-200 rounded-b-lg shadow-xl' />
-                    <div className='pt-8 pb-8'>
-                        <ContentPanel videos={videos} role={session.user.role} className='shadow-xl rounded-xl bg-slate-200 text-sm text-gray-500 dark:text-gray-400' />
+            {loginStatus(status, router, true) ?
+                <>
+                    <div className="flex flex-col items-center m-auto">
+                        {session.user.role.content_editor ?
+                            <>
+                                <UploadForm className='bg-slate-200 rounded-b-lg shadow-xl drop-shadow-xl border border-solid border-slate-900 ' />
+                                <div className='pt-8 pb-8'>
+                                    <ContentPanel videos={videos} role={session.user.role} className='shadow-xl drop-shadow-xl border border-solid border-slate-900 rounded-xl bg-slate-200 text-sm text-gray-500 dark:text-gray-400' />
+                                </div>
+                            </>
+                            :
+                            <div className='pb-8'>
+                                <ContentPanel videos={videos} role={session.user.role} className='rounded-b-xl bg-slate-200 text-sm text-gray-500 dark:text-gray-400' />
+                            </div>
+                        }
                     </div>
-                    </>
-                    :
-                    <div className='pb-8'>
-                        <ContentPanel videos={videos} role={session.user.role} className='rounded-b-xl bg-slate-200 text-sm text-gray-500 dark:text-gray-400' />
-                    </div>
-                }
-            </div>
-        </>
-        :
-        <></>
-        }
+                </>
+                :
+                <></>
+            }
         </>
     )
 }

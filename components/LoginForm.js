@@ -4,12 +4,14 @@ import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 
-export default function LoginForm({ csrfToken }) {
+export default function LoginForm({ csrfToken, pushHome, login, setLogin }) {
   const router = useRouter();
   const [error, setError] = useState(null);
 
+  const doPush = pushHome ?? false
+
   return (
-    <div className="flex h-full items-center justify-center">
+    <div className="flex items-center justify-center">
       <Formik
         initialValues={{ username: '', password: '', }}
         validationSchema={Yup.object({
@@ -27,14 +29,16 @@ export default function LoginForm({ csrfToken }) {
             setError('Invalid Username or Password');
           } else {
             setError(null);
+            if (doPush) {
+              router.push('/');
+            }
           }
-          if (res.url) router.push(res.url);
           setSubmitting(false);
         }}
       >
         {(formik) => (
           <form onSubmit={formik.handleSubmit}>
-            <div className="flex flex-col items-center justify-center py-2 rounded-lg bg-slate-200 shadow-xl">
+            <div className="flex flex-col items-center justify-center py-2 rounded-b-lg bg-slate-200 shadow-xl drop-shadow-xl border border-solid border-slate-900">
               <div className="px-8 pt-6 pb-8 mb-4">
                 <input
                   name="csrfToken"
