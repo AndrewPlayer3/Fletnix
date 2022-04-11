@@ -16,7 +16,7 @@ export default function profile({ user }) {
 
         return (
             <div className='flex items-center justify-center'>
-                <div className="bg-slate-200 shadow-2xl drop-shadow-2xl shadow-inner pb-1 rounded-md">
+                <div className="bg-slate-200 shadow-2xl drop-shadow-2xl pb-1 rounded-md">
                     <div className="whitespace-nowrap px-4 py-5 sm:px-6">
                         <h3 className="text-2xl leading-6 font-medium text-gray-900">Your profile</h3>
                         <p className="mt-1 max-w-2xl text-md text-gray-500">Personal details.</p>

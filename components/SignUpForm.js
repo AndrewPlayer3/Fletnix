@@ -67,7 +67,7 @@ export default function SignUpForm({ csrfToken }) {
                                 <div className="mb-4">
                                     <label
                                         htmlFor="username"
-                                        className="uppercase text-sm text-gray-600 font-bold"
+                                        className="form_text"
                                     >
                                         username
                                         <Field
@@ -86,7 +86,7 @@ export default function SignUpForm({ csrfToken }) {
                                 <div className="mb-4">
                                     <label
                                         htmlFor="username"
-                                        className="uppercase text-sm text-gray-600 font-bold"
+                                        className="form_text"
                                     >
                                         email
                                         <Field
@@ -105,7 +105,7 @@ export default function SignUpForm({ csrfToken }) {
                                 <div className="mb-4">
                                     <label
                                         htmlFor="password"
-                                        className="uppercase text-sm text-gray-600 font-bold"
+                                        className="form_text"
                                     >
                                         password
                                         <Field
@@ -124,7 +124,7 @@ export default function SignUpForm({ csrfToken }) {
                                 <div className="mb-4">
                                     <label
                                         htmlFor="confirmpassword"
-                                        className="uppercase text-sm text-gray-600 font-bold"
+                                        className="form_text"
                                     >
                                         re-type password
                                         <Field
@@ -143,7 +143,7 @@ export default function SignUpForm({ csrfToken }) {
                                 {process.env.ALLOW_ROLES == 'true' ?
                                     <>
                                         <div>
-                                            <label className='text-[#223843]'>
+                                            <label className='form_text'>
                                                 <div className="flex">
                                                     <div className="mr-1">
                                                         <Field type="checkbox" name="content_editor" />
@@ -155,7 +155,7 @@ export default function SignUpForm({ csrfToken }) {
                                             </label>
                                         </div>
                                         <div className='mb-4'>
-                                            <label className='text-[#223843]'>
+                                            <label className='form_text'>
                                                 <div className="flex">
                                                     <div className="mr-1">
                                                         <Field type="checkbox" name="content_manager" />

@@ -14,7 +14,7 @@ export default function Thumbnail({ result }) {
                 {/* Each Video Thumbnail display/ Display default thumbnail if there is none in db */}
                 <div>
                     <Link href={{ pathname: '/videos/' + result['_id'] }}>
-                        <div className='relative flex h-auto w-auto rounded-md drop-shadow-2xl transition ease-in-out delay-50 hover:scale-105 hover:rotate-1'>
+                        <div className='relative flex h-auto w-auto rounded-md  border border-solid border-stone-900 transition ease-in-out delay-50 hover:scale-105 hover:rotate-1'>
                             <Image
                                 layouts='fill'
                                 src={thumb_url}
@@ -28,7 +28,7 @@ export default function Thumbnail({ result }) {
                         </div>
                     </Link>
                 </div>
-                <p className='pt-1 font-sans font-bold text-[#EFF1F3]'>{result['title']}</p>
+                <p className='pt-1 font-sans font-bold shadow-inset-xl text-[#EFF1F3]'>{result['title']}</p>
             </div>
         </div>
     )

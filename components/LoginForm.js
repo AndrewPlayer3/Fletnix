@@ -38,7 +38,7 @@ export default function LoginForm({ csrfToken, pushHome, login, setLogin }) {
       >
         {(formik) => (
           <form onSubmit={formik.handleSubmit}>
-            <div className="flex flex-col items-center justify-center py-2 rounded-b-lg bg-slate-200 shadow-xl drop-shadow-xl border border-solid border-slate-900">
+            <div className="login flex flex-col items-center justify-center py-2">
               <div className="px-8 pt-6 pb-8 mb-4">
                 <input
                   name="csrfToken"
@@ -51,7 +51,7 @@ export default function LoginForm({ csrfToken, pushHome, login, setLogin }) {
                 <div className="mb-4">
                   <label
                     htmlFor="username"
-                    className="uppercase text-sm text-gray-600 font-bold"
+                    className="form_text"
                   >
                     username
                     <Field
@@ -59,7 +59,7 @@ export default function LoginForm({ csrfToken, pushHome, login, setLogin }) {
                       aria-label="enter your username"
                       aria-required="true"
                       type="text"
-                      className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                      className="form_input"
                     />
                   </label>
 
@@ -70,7 +70,7 @@ export default function LoginForm({ csrfToken, pushHome, login, setLogin }) {
                 <div className="mb-6">
                   <label
                     htmlFor="password"
-                    className="uppercase text-sm text-gray-600 font-bold"
+                    className="form_text"
                   >
                     password
                     <Field
@@ -78,7 +78,7 @@ export default function LoginForm({ csrfToken, pushHome, login, setLogin }) {
                       aria-label="enter your password"
                       aria-required="true"
                       type="password"
-                      className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                      className="form_input"
                     />
                   </label>
 
@@ -89,7 +89,7 @@ export default function LoginForm({ csrfToken, pushHome, login, setLogin }) {
                 <div className="flex items-center justify-center">
                   <button
                     type="submit"
-                    className="uppercase text-sm font-bold tracking-wide bg-slate-600 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline hover:shadow-xl hover:border hover:border-opacity-0 transition duration-150"
+                    className="form_button"
                   >
                     {formik.isSubmitting ? 'Please wait...' : 'Sign In'}
                   </button>
@@ -97,7 +97,7 @@ export default function LoginForm({ csrfToken, pushHome, login, setLogin }) {
                     onClick={() => router.push('/signup')}
                     name="signup"
                     type="button"
-                    className="uppercase text-sm font-bold mx-2 tracking-wide bg-slate-800 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline hover:shadow-xl hover:shadow-xl hover:border hover:border-opacity-0 transition duration-150"
+                    className="form_button_alt"
                   >
                     sign up
                   </button>

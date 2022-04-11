@@ -6,7 +6,7 @@
 
     /* General Background Styles */
     body {
-        @apply bg-gradient-to-l from-slate-900 via-slate-800 to-slate-900 scroll-smooth
+        @apply bg-gradient-to-l from-stone-900 via-[#13014D] to-stone-900 scroll-smooth
     }
 
     /* Hide scrollbars without removing functionality */
@@ -16,6 +16,62 @@
     }
     ::-webkit-scrollbar {          /* Chrome      */
         display: none;
+    }
+
+    .theme_color {
+        @apply bg-gradient-to-l from-stone-900 via-[#13014D] to-stone-900
+    }
+
+    .navbar {
+        @apply bg-stone-900 bg-opacity-50 border border-opacity-50 border-stone-900
+    }
+
+    .search_bar {
+        @apply relative flex items-center justify-center min-w-0 block w-full px-3 py-1.5 text-slate-200 font-normal bg-stone-900 bg-opacity-10 rounded-lg border border-solid border-stone-900 transition ease-in-out mr-1 m-0 focus:text-slate-200 hover:border-slate-500
+    }
+
+    .search_button {
+        @apply tablet:hidden rounded-lg inline-block px-6 py-2.5 bg-stone-900 bg-opacity-10 text-white font-medium text-xs leading-tight uppercase shadow-md border border-solid border-[#0A2730] hover:border hover:border-slate-500 hover:shadow-lg focus:bg-slate-500 focus:shadow-lg focus:ring-0  transition duration-150 ease-in-out flex items-center
+    }
+
+    .footer {
+        @apply z-30 text-slate-200 border border-solid border-stone-900 theme_color bg-opacity-50 
+    }
+
+    .footer_button {
+        @apply rounded-md bg-stone-900 border border-opacity-20 border-stone-100 hover:border-opacity-70
+    }
+
+    .login {
+        @apply  rounded-b-lg bg-stone-100 bg-opacity-70 shadow-xl drop-shadow-xl border border-solid border-slate-900
+    }
+
+    .signup {
+
+    }
+
+    .content {
+
+    }
+
+    .upload {
+
+    }
+
+    .form_button {
+        @apply uppercase shadow-md text-sm font-bold tracking-wide bg-indigo-900 text-gray-100 p-3 rounded-lg w-full hover:shadow-lg hover:scale-105  transition duration-150
+    }
+
+    .form_button_alt {
+        @apply uppercase shadow-md text-sm font-bold mx-2 tracking-wide bg-stone-900 text-gray-100 p-3 rounded-lg w-full hover:shadow-lg hover:border hover:scale-105 transition duration-150
+    }
+
+    .form_text {
+        @apply uppercase text-sm text-stone-900 font-bold
+    }
+
+    .form_input {
+        @apply w-full bg-stone-100 bg-opacity-50 shadow-md text-gray-900 mt-2 p-3 rounded-lg focus:outline-none
     }
 
 }

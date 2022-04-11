@@ -20,7 +20,7 @@ export default function NavBar({ liveSearch }) {
     }
 
     return (
-        <div as="nav" className="bg-slate-900 bg-opacity-90 border border-opacity-50 border-[#223843]">
+        <div as="nav" className="navbar">
             <div className="max-w-7xl mx-auto ">
                 <div className="flex h-14 items-center justify-center">
                     <div className="flex items-center justify-start sm:mr-6 sm:items-stretch sm:justify-start">

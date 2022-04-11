@@ -1,11 +1,11 @@
 export default function Footer() {
     return (
         <div>
-            <footer className="flex h-14 items-center text-white bg-opacity-90 bg-slate-900">
+            <footer className="footer flex h-14 items-center">
                 <div className="flex w-screen justify-center items-center">
                     <div className="flex w-2/4 justify-evenly items-center">
                         <a href="https://github.com/andrewplayer3/Fletnix" className="text-[#EFF1F3]">
-                            <div className='flex flex-row p-2 rounded-md border border-opacity-20 border-slate-200 hover:border-opacity-70'>
+                            <div className='footer_button flex flex-row p-2'>
                                 <svg
                                     aria-hidden="true"
                                     focusable="false"

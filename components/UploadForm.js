@@ -42,7 +42,7 @@ export default function UploadForm({ className }) {
             method: "POST",
             body: JSON.stringify({
                 filetype: file.type,
-                is_video: is_video 
+                is_video: is_video
             })
         });
 
@@ -54,10 +54,10 @@ export default function UploadForm({ className }) {
             headers: {
                 'Content-Type': file.type
             },
-            body: file 
+            body: file
         });
-    
-        return signedurl_data.filename 
+
+        return signedurl_data.filename
     };
 
     var classes = className ?? 'bg-slate-200 rounded-b-lg '
@@ -98,15 +98,15 @@ export default function UploadForm({ className }) {
                     console.log("Video URL: ", video_loc);
 
                     if (!video_loc || !thumbnail_loc) {
-                        
+
                         alert("There was an error uploading the video.");
-                        
+
                         const del_res = await fetch(process.env.HOST_NAME + '/api/videos/' + video_info._id, {
                             method: 'DELETE',
                         });
                         return;
                     } else {
-                        
+
                         const add_filenames = await fetch(process.env.HOST_NAME + '/api/videos/' + video_info._id, {
                             method: 'PATCH',
                             body: JSON.stringify({
@@ -117,7 +117,7 @@ export default function UploadForm({ className }) {
                     }
 
                     alert(values.title + ' has been uploaded.');
-                    
+
                     setThumbnail(null);
                     setVideo(null);
                     resetForm();
