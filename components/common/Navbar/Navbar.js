@@ -24,7 +24,7 @@ export default function NavBar({ liveSearch }) {
             <div className="max-w-7xl mx-auto ">
                 <div className="flex h-14 items-center justify-center">
                     <div className="flex items-center justify-start sm:mr-6 sm:items-stretch sm:justify-start">
-                        <div className="flex-shrink-0 flex items-center cursor-pointer">
+                        <div className="flex-shrink-0 flex items-center cursor-pointer hover:scale-105">
                             <Link href='/'>
                                 <div className='flex h-auto w-auto'>
                                     <div className='flex ml-1 items-center'>
