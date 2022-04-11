@@ -51,7 +51,7 @@
     }
 
     .footer_button {
-        @apply rounded-md  bg-gradient-to-tr from-[#1F014F] via-[#1F013F] to-[#1F015F] border border-solid border-[#1F013F]
+        @apply rounded-md  bg-gradient-to-tr from-stone-900 via-[#1F013F] to-stone-900 border border-solid border-[#1F013F]
     }
 
     .form {
