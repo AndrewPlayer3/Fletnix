@@ -70,4 +70,10 @@ export default connectDB(NextAuth({
             return session;
         },
     },
+
+    theme: {
+        colorScheme: "light", // "auto" | "dark" | "light"
+        brandColor: '#4A017F', // Hex color code
+        logo: process.env.HOST_NAME + "/movie-film.png" // Absolute URL to image
+    }
 }));

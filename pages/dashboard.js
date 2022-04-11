@@ -29,7 +29,7 @@ export default function Content({ videos }) {
                     <div className="flex flex-col items-center w-screen m-auto">
                         {session.user.role.content_editor ?
                             <>
-                                <UploadForm className='bg-slate-200 rounded-b-lg shadow-xl drop-shadow-xl border border-solid border-slate-900 ' />
+                                <UploadForm />
                                 <div className='pt-8 pb-8'>
                                     <ContentPanel videos={videos} role={session.user.role} className={'content_panel_editor'} />
                                 </div>

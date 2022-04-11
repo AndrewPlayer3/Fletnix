@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 export default function Layout({ children }) {
     return (
         <div className='flex flex-col min-h-screen'>
-            <div className="drop-shadow-lg z-50">
+            <div className="drop-shadow-lg z-40">
                 <NavBar liveSearch={true} />
             </div>
             <main className='flex-grow mb-14'>
