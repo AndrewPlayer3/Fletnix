@@ -105,24 +105,7 @@
     }
 
     .video_info_box {
-        @apply rounded-lg shadow-2xl border border-opacity-90 border-stone-900
+        @apply rounded-lg shadow-2xl border border-opacity-90 border-[#2F013F]
     }
-
-    .login {
-       
-    }
-
-    .signup {
-
-    }
-
-    .content {
-
-    }
-
-    .upload {
-
-    }
-
 
 }
