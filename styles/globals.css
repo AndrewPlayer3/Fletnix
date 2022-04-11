@@ -19,7 +19,7 @@
     }
 
     .theme_color {
-        @apply bg-gradient-to-l from-stone-900 via-[#13013A] to-stone-900
+        @apply bg-gradient-to-l from-stone-900 via-[#1F013F] to-stone-900
     }
 
     .bar_theme_color {
@@ -59,12 +59,12 @@
     }
 
     .form_button {
-        @apply uppercase shadow-md text-sm font-medium tracking-wide whitespace-nowrap bg-gradient-to-tr from-[#13013A] via-[#13015A] to-[#13015A] text-stone-100 p-3 rounded-lg;
+        @apply uppercase shadow-md text-sm font-medium tracking-wide whitespace-nowrap bg-gradient-to-tr from-[#1F015A] via-[#1F013A] to-[#1F013A] text-stone-100 p-3 rounded-lg;
         @apply w-full hover:shadow-2xl hover:drop-shadow-2xl hover:scale-100  transition duration-150 border border-solid border-stone-700
     }
 
     .form_button_alt {
-        @apply uppercase shadow-md text-sm font-medium mx-2 tracking-wide whitespace-nowrap bg-gradient-to-tr from-stone-900 via-stone-800 to-stone-700 text-stone-100 p-3 rounded-lg;
+        @apply uppercase shadow-md text-sm font-medium mx-2 tracking-wide whitespace-nowrap bg-gradient-to-tr from-stone-800 via-stone-900 to-stone-900 text-stone-100 p-3 rounded-lg;
         @apply w-full hover:shadow-2xl hover:drop-shadow-2xl hover:border hover:scale-100 transition duration-150 border border-solid border-stone-700
     }
 
