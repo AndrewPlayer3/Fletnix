@@ -6,7 +6,7 @@
 
     /* General Background Styles */
     body {
-        @apply bg-gradient-to-l from-stone-900 via-[#13014D] to-stone-900 scroll-smooth font-body
+        @apply theme_color scroll-smooth font-body
     }
 
     /* Hide scrollbars without removing functionality */
@@ -19,31 +19,97 @@
     }
 
     .theme_color {
-        @apply bg-gradient-to-l from-stone-900 via-[#13014D] to-stone-900
+        @apply bg-gradient-to-l from-stone-900 via-[#13013A] to-stone-900
+    }
+
+    .bar_theme_color {
+        @apply bg-gradient-to-l from-stone-900 via-stone-800 to-stone-900
+    }
+
+    .transparent_gradient {
+        @apply bg-gradient-to-l from-stone-900 via-transparent to-stone-900
     }
 
     .navbar {
-        @apply bg-stone-900 bg-opacity-50 border border-opacity-50 border-stone-900
+        @apply bar_theme_color border border-solid border-stone-800
     }
 
     .search_bar {
-        @apply relative flex items-center justify-center min-w-0 block w-full px-3 py-1.5 text-slate-200 font-normal bg-stone-900 bg-opacity-10 rounded-lg border border-solid border-stone-900 transition ease-in-out mr-1 m-0 focus:text-slate-200 hover:border-slate-500
+        @apply relative flex items-center justify-center min-w-0  w-full px-3 py-1.5 text-stone-100 font-normal bg-stone-900;
+        @apply bg-opacity-10 rounded-lg border border-solid border-stone-800 transition ease-in-out mr-1 m-0 focus:text-stone-100;
+        @apply hover:border-stone-700 focus:border-stone-700 focus:outline-none;
     }
 
     .search_button {
-        @apply tablet:hidden rounded-lg inline-block px-6 py-2.5 bg-stone-900 bg-opacity-10 text-white font-medium text-xs leading-tight uppercase shadow-md border border-solid border-[#0A2730] hover:border hover:border-slate-500 hover:shadow-lg focus:bg-slate-500 focus:shadow-lg focus:ring-0  transition duration-150 ease-in-out flex items-center
+        @apply tablet:hidden rounded-lg px-6 py-2.5 bg-stone-900 bg-opacity-10 text-stone-100 font-medium text-xs leading-tight uppercase;
+        @apply shadow-md border border-solid border-stone-800 hover:border hover:border-stone-700;
+        @apply hover:shadow-lg focus:bg-slate-500 focus:shadow-lg focus:ring-0  transition duration-150 ease-in-out flex items-center;
     }
 
     .footer {
-        @apply z-30 text-slate-200 border border-solid border-stone-900 theme_color bg-opacity-50 
+        @apply z-30 bg-opacity-0 text-slate-200 border border-opacity-0 border-stone-900
     }
 
     .footer_button {
-        @apply rounded-md bg-stone-900 border border-opacity-20 border-stone-100 hover:border-opacity-70
+        @apply rounded-md bg-gradient-to-tr from-stone-900 via-stone-900 to-stone-800 border border-solid border-stone-900
+    }
+
+    .form {
+        @apply rounded-b-lg bg-gradient-to-b from-stone-100 via-stone-200 to-stone-100 bg-opacity-95 shadow-xl drop-shadow-xl border border-solid border-slate-900
+    }
+
+    .form_button {
+        @apply uppercase shadow-md text-sm font-medium tracking-wide bg-gradient-to-tr from-[#13013A] via-[#13015A] to-[#13017A] text-stone-100 p-3 rounded-lg;
+        @apply w-full hover:shadow-lg hover:scale-100  transition duration-150 border border-solid border-stone-700
+    }
+
+    .form_button_alt {
+        @apply uppercase shadow-md text-sm font-medium mx-2 tracking-wide bg-gradient-to-tr from-stone-900 via-stone-800 to-stone-700 text-stone-100 p-3 rounded-lg;
+        @apply w-full hover:shadow-lg hover:border hover:scale-100 transition duration-150 border border-solid border-stone-700
+    }
+
+    .form_text {
+        @apply uppercase text-sm text-stone-900 font-medium
+    }
+
+    .form_input {
+        @apply w-full bg-gradient-to-r from-transparent via-transparent to-stone-100 bg-opacity-100 shadow-md text-gray-900 mt-2 p-3 rounded-lg focus:outline-none
+    }
+
+    .content_panel_manager {
+        @apply rounded-b-xl bg-stone-100 border border-solid border-stone-900
+    }
+
+    .content_panel_editor {
+        @apply shadow-xl drop-shadow-xl border border-solid border-stone-100 rounded-xl bg-stone-100
+    }
+
+    .content_panel_header_text {
+        @apply text-left text-sm font-medium text-stone-700
+    }
+     
+    .content_panel_body_text {
+        @apply text-left text-sm font-light text-stone-700
+    }
+
+    .user_menu {
+        @apply rounded-md shadow-xl drop-shadow-xl bg-stone-900 bg-opacity-95 border border-solid border-stone-700 text-stone-900 z-50 focus:outline-none
+    }
+
+    .user_menu_options {
+        @apply bg-stone-800
+    }
+
+    .user_menu_text {
+        @apply block px-4 py-2 text-sm font-light text-stone-100
+    }
+
+    .video_info_box {
+        @apply rounded-lg shadow-2xl border border-opacity-90 border-stone-900
     }
 
     .login {
-        @apply  rounded-b-lg bg-stone-100 bg-opacity-70 shadow-xl drop-shadow-xl border border-solid border-slate-900
+       
     }
 
     .signup {
@@ -58,20 +124,5 @@
 
     }
 
-    .form_button {
-        @apply uppercase shadow-md text-sm font-bold tracking-wide bg-indigo-900 text-gray-100 p-3 rounded-lg w-full hover:shadow-lg hover:scale-105  transition duration-150
-    }
-
-    .form_button_alt {
-        @apply uppercase shadow-md text-sm font-bold mx-2 tracking-wide bg-stone-900 text-gray-100 p-3 rounded-lg w-full hover:shadow-lg hover:border hover:scale-105 transition duration-150
-    }
-
-    .form_text {
-        @apply uppercase text-sm text-stone-900 font-bold
-    }
-
-    .form_input {
-        @apply w-full bg-stone-100 bg-opacity-50 shadow-md text-gray-900 mt-2 p-3 rounded-lg focus:outline-none
-    }
 
 }

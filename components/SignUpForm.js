@@ -53,8 +53,8 @@ export default function SignUpForm({ csrfToken }) {
             >
                 {(formik) => (
                     <form onSubmit={formik.handleSubmit}>
-                        <div className="flex flex-col items-center justify-center py-2 rounded-b-lg bg-slate-200 shadow-xl drop-shadow-xl border border-solid border-slate-900">
-                            <div className="px-8 pt-6 pb-8 mb-4">
+                        <div className="form flex flex-col items-center justify-center py-2">
+                            <div className="px-8 pt-6 pb-4 mb-4">
                                 <input
                                     name="csrfToken"
                                     type="hidden"
@@ -75,7 +75,7 @@ export default function SignUpForm({ csrfToken }) {
                                             aria-label="enter your username"
                                             aria-required="true"
                                             type="text"
-                                            className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                                            className="form_input"
                                         />
                                     </label>
 
@@ -94,7 +94,7 @@ export default function SignUpForm({ csrfToken }) {
                                             aria-label="enter your email"
                                             aria-required="true"
                                             type="email"
-                                            className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                                            className="form_input"
                                         />
                                     </label>
 
@@ -113,7 +113,7 @@ export default function SignUpForm({ csrfToken }) {
                                             aria-label="enter your password"
                                             aria-required="true"
                                             type="password"
-                                            className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                                            className="form_input"
                                         />
                                     </label>
 
@@ -132,7 +132,7 @@ export default function SignUpForm({ csrfToken }) {
                                             aria-label="enter your password"
                                             aria-required="true"
                                             type="password"
-                                            className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                                            className="form_input"
                                         />
                                     </label>
 
@@ -172,7 +172,7 @@ export default function SignUpForm({ csrfToken }) {
                                 <div className="flex items-center justify-center">
                                     <button
                                         type="submit"
-                                        className="uppercase text-sm font-bold tracking-wide bg-slate-800 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline hover:shadow-xl active:scale-90 transition duration-150"
+                                        className="form_button"
                                     >
                                         {formik.isSubmitting ? 'Please wait...' : 'Sign In'}
                                     </button>

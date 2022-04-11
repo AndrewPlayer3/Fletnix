@@ -60,9 +60,6 @@ export default function UploadForm({ className }) {
         return signedurl_data.filename
     };
 
-    var classes = className ?? 'bg-slate-200 rounded-b-lg '
-    classes += ' flex flex-col items-center justify-center'
-
     return (
         <>
             <Formik
@@ -125,12 +122,12 @@ export default function UploadForm({ className }) {
             >
                 {(formik) => (
                     <form onSubmit={formik.handleSubmit}>
-                        <div className={classes}>
+                        <div className='form'>
                             <div className="px-4 pt-4 pb-4">
                                 <div className="mb-4">
                                     <label
                                         htmlFor="title"
-                                        className="uppercase text-sm text-gray-600 font-bold"
+                                        className="form_text"
                                     >
                                         title
                                         <Field
@@ -138,7 +135,7 @@ export default function UploadForm({ className }) {
                                             aria-label="enter the title"
                                             aria-required="true"
                                             type="text"
-                                            className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                                            className="form_input"
                                         />
                                     </label>
 
@@ -149,7 +146,7 @@ export default function UploadForm({ className }) {
                                 <div className="mb-4">
                                     <label
                                         htmlFor="description"
-                                        className="uppercase text-sm text-gray-600 font-bold"
+                                        className="form_text"
                                     >
                                         description
                                         <Field
@@ -157,7 +154,7 @@ export default function UploadForm({ className }) {
                                             aria-label="enter a description for the video"
                                             aria-required="true"
                                             type="text"
-                                            className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                                            className="form_input"
                                         />
                                     </label>
 
@@ -168,7 +165,7 @@ export default function UploadForm({ className }) {
                                 <div className="mb-4">
                                     <label
                                         htmlFor="tags"
-                                        className="uppercase text-sm text-gray-600 font-bold"
+                                        className="form_text"
                                     >
                                         tags [comma seperated list]
                                         <Field
@@ -176,7 +173,7 @@ export default function UploadForm({ className }) {
                                             aria-label="enter a comma seperated list of tags for the video"
                                             aria-required="true"
                                             type="text"
-                                            className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                                            className="form_input"
                                         />
                                     </label>
 
@@ -187,7 +184,7 @@ export default function UploadForm({ className }) {
                                 <div className="mb-4">
                                     <label
                                         htmlFor="video_length"
-                                        className="uppercase text-sm text-gray-600 font-bold"
+                                        className="form_text"
                                     >
                                         length of the video in seconds
                                         <Field
@@ -195,7 +192,7 @@ export default function UploadForm({ className }) {
                                             aria-label="enter the length of the video in seconds"
                                             aria-required="true"
                                             type="text"
-                                            className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                                            className="form_input"
                                         />
                                     </label>
 
@@ -204,13 +201,13 @@ export default function UploadForm({ className }) {
                                     </div>
                                 </div>
                                 <div className="mt-8">
-                                    <label className="cursor-pointer hover:shadow-lg hover:border-b hover:border-b-solid hover:border-b-slate-800" htmlFor='video_location'>
+                                    <label className="cursor-pointer form_text hover:shadow-lg hover:border-b hover:border-b-solid hover:border-b-stone-800" htmlFor='video_location'>
                                         <Field type="file" className='hidden' id="video_location" name="video_location" onChange={uploadVideoToClient} />
                                         Select the Video File {video ? '✅ ' : ''}
                                     </label>
                                 </div>
                                 <div className="mt-4">
-                                    <label className="cursor-pointer hover:shadow-lg hover:border-b hover:border-b-solid hover:border-b-slate-800" htmlFor='thumbnail_location'>
+                                    <label className="cursor-pointer form_text hover:shadow-lg hover:border-b hover:border-b-solid hover:border-b-stone-800" htmlFor='thumbnail_location'>
                                         <Field type="file" className='hidden' id='thumbnail_location' name="thumbnail_location" onChange={uploadThumbnailToClient} />
                                         Select the Thumbnail File {thumbnail ? '✅' : ''}
                                     </label>
@@ -218,7 +215,7 @@ export default function UploadForm({ className }) {
                                 <div className="flex items-center justify-center mt-8">
                                     <button
                                         type="submit"
-                                        className="uppercase text-sm font-bold tracking-wide bg-slate-800 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline hover:shadow-xl active:scale-90 transition duration-150"
+                                        className="form_button_alt"
                                     >
                                         {formik.isSubmitting ? 'Please wait...' : 'Upload'}
                                     </button>
