@@ -18,13 +18,26 @@ This is a basic responsive video streaming website made with NextJS, Tailwind CS
 
 ## Main Pages
 ### Home Page
-![FLETNIX_HOME_PAGE](https://user-images.githubusercontent.com/19739107/161635798-3c758ee3-300a-46e6-bdb8-958f768f2298.png)
+![home_page](https://user-images.githubusercontent.com/19739107/162868256-02620d48-c18b-43bc-9947-9f6179bfb7fc.png)
+
+### Home Login Form
+![home_login](https://user-images.githubusercontent.com/19739107/162868547-6854fe73-e855-4b9f-a1c6-fabb7830fcf9.png)
+
+### Video Login Form
+![login_video](https://user-images.githubusercontent.com/19739107/162868356-b3ae3996-fd16-4804-a11d-5fef57ea3b2f.png)
+
+### Signup Page
+![signup](https://user-images.githubusercontent.com/19739107/162868447-9ba40922-10bd-4007-9881-bed3ea60eef2.png)
 
 ### Video Page
-![FLETNIX_VIDEO_PAGE](https://user-images.githubusercontent.com/19739107/161635845-8f9e59a8-a0e7-4567-b47f-b66d760f0c9f.png)
+![video](https://user-images.githubusercontent.com/19739107/162868278-3c6886c5-056c-45e5-84a0-2578866143b0.png)
 
-### Content Page
-![Screenshot from 2022-04-04 13-23-54](https://user-images.githubusercontent.com/19739107/161635867-9a4826ac-8532-4b6f-b901-26e7ed35357d.png)
+### Editor Dashboard Page
+![editor_dashboard](https://user-images.githubusercontent.com/19739107/162868389-fe6ec068-4c3e-4af5-a342-b1e60b9cb66f.png)
+
+### Manager Dashboard Page
+![manager_dashboard](https://user-images.githubusercontent.com/19739107/162868409-40bca013-3633-4661-92e2-a3635167233a.png)
+
 
 ## User stories
 
