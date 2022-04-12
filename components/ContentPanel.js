@@ -1,10 +1,13 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 
 
 export default function ContentPanel({ videos, role, className}) {
     
     const router = useRouter();
+    const [deleting, setDeleting] = useState(false);
+    const [currentVideo, setCurrentVideo] = useState('');
 
     function fancyTimeFormat(duration) {
         // Hours, minutes and seconds
@@ -33,8 +36,10 @@ export default function ContentPanel({ videos, role, className}) {
 
         if (res.status == 500) {
             alert('There was an error removing the video from the database.');
+            setDeleting(false);
             return;
         } else if (res.status == 403) {
+            setDeleting(false);
             alert('Unauthorized: You must be a Content Editor to delete videos.');
             return;
         }
@@ -61,7 +66,9 @@ export default function ContentPanel({ videos, role, className}) {
             }
         }
 
-        router.push('/dashboard/content');
+        setDeleting(false);
+
+        router.push('/dashboard');
     };
 
     return (
@@ -93,7 +100,7 @@ export default function ContentPanel({ videos, role, className}) {
                             </th>
                             {role.content_editor ?
                                 <th scope="col" className='content_panel_header_text pt-2 pb-1 px-2'>
-                                    Delete 
+                                    Delete
                                 </th>
                                 :
                                 <></>
@@ -136,9 +143,9 @@ export default function ContentPanel({ videos, role, className}) {
                                 </td>
                                 {role.content_editor ?
                                     <td className="px-2">
-                                        <a onClick={async () => removeVideo(video._id)} className="flex flex-row text-red-600  hover:underline hover:cursor-pointer">
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}> <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /> </svg>
-                                            <span>Delete</span>
+                                        <a onClick={async () => {removeVideo(video._id); setDeleting(true); setCurrentVideo(video._id)}} className="flex flex-row text-red-600  hover:underline hover:cursor-pointer">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className={"h-5 w-5" + (deleting && video._id == currentVideo ? " animate-[spin_1s_ease-in-out_infinite]" : "")} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}> <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /> </svg>
+                                            <span>{ deleting && video._id == currentVideo ? <>Deleting</> : <>Delete</> }</span>
                                         </a>
                                     </td>
                                     :
