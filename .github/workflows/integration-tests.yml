@@ -9,8 +9,32 @@ on:
 jobs:
   # note: Ubuntu 16 probably works, but is deprecated
 
-  basic-ubuntu-18:
-    runs-on: ubuntu-18.04
+  # basic-ubuntu-18:
+  #   runs-on: ubuntu-18.04
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+
+  #     - name: Start project
+  #       run: |
+  #         npm install .
+  #         npm run dev
+
+  #     - name: Cypress tests
+  #       # normally you would write
+  #       uses: cypress-io/github-action@v2
+  #       # uses: ./
+  #       # the parameters below are only necessary
+  #       # because we are running these examples in a monorepo
+  #       # with:
+  #         # working-directory: cypress/integration
+  #         # just for full picture after installing Cypress
+  #         # print information about detected browsers, etc
+  #         # see https://on.cypress.io/command-line#cypress-info
+  #         # build: npx cypress info
+
+  basic-ubuntu-20:
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -21,46 +45,8 @@ jobs:
           npm run dev
 
       - name: Cypress tests
-        # normally you would write
-        uses: cypress-io/github-action@v2
-        # uses: ./
-        # the parameters below are only necessary
-        # because we are running these examples in a monorepo
-        # with:
-          # working-directory: cypress/integration
-          # just for full picture after installing Cypress
-          # print information about detected browsers, etc
-          # see https://on.cypress.io/command-line#cypress-info
-          # build: npx cypress info
-
-  basic-ubuntu-20:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Cypress tests
         uses: cypress-io/github-action@v2
 
-
-  basic-on-windows:
-    runs-on: windows-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Cypress tests
-        uses: cypress-io/github-action@v2
-
-
-  basic-on-mac:
-    runs-on: macos-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Cypress tests
-        uses: cypress-io/github-action@v2
 
 
   # skips the binary installation
