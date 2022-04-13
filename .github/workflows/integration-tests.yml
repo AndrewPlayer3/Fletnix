@@ -15,6 +15,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Start project
+      - run: |
+          npm install .
+          npm run dev
+
       - name: Cypress tests
         # normally you would write
         uses: cypress-io/github-action@v2
