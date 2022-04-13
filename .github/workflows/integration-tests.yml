@@ -39,14 +39,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Start project
+      - name: Build Project & Test
         run: |
           npm install .
-          npm run dev
-
-      - name: Cypress tests
-        uses: cypress-io/github-action@v2
-
+          npm run build && npm run e2e:headless
 
 
   # skips the binary installation

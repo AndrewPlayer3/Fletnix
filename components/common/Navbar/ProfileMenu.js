@@ -36,8 +36,9 @@ export default function ProfileMenu() {
             <Menu.Item>
                 {({ active }) => (
                     <a
+                        id='profile'
                         href='/profile'//{user.viewer ? "profile" : "dashboard"}
-                        className={classNames(active ? 'user_menu_options' : '', 'user_menu_text')}
+                        className={'profile ' + classNames(active ? 'user_menu_options' : '', 'user_menu_text')}
                     >
                         Profile
                     </a>
@@ -47,8 +48,9 @@ export default function ProfileMenu() {
                 <Menu.Item>
                     {({ active }) => (
                         <a
+                            id='dashboard'
                             href='/dashboard'//{user.viewer ? "profile" : "dashboard"}
-                            className={classNames(active ? 'user_menu_options' : '', 'user_menu_text')}
+                            className={'dashboard ' + classNames(active ? 'user_menu_options' : '', 'user_menu_text')}
                         >
                             Dashboard
                         </a>
@@ -60,9 +62,10 @@ export default function ProfileMenu() {
             <Menu.Item>
                 {({ active }) => (
                     <a
+                        id='signout'
                         onClick={() => signOut()}
                         href="/"
-                        className={classNames(active ? 'user_menu_options' : '', 'user_menu_text')}
+                        className={'signout ' + classNames(active ? 'user_menu_options' : '', 'user_menu_text')}
                     >
                         Sign out
                     </a>
@@ -75,7 +78,8 @@ export default function ProfileMenu() {
             <Menu.Item>
                 {({ active }) => (
                     <a
-                        className={classNames(active ? 'user_menu_options' : '', 'user_menu_text')}
+                        id='signin'
+                        className={'signin ' + classNames(active ? 'user_menu_options' : '', 'user_menu_text')}
                         onClick={async () => { setLogin(true); setVideos(await queryVideos()) }}
                     >
                         Sign in
@@ -102,7 +106,7 @@ export default function ProfileMenu() {
                     <>
                         <div className="relative inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                             <Menu as="div" className="relative">
-                                <div>
+                                <div id='menu'>
                                     <Menu.Button className="text-[#EFF1F3] flex text-sm rounded-full px-2 py-2 hover:scale-105">
                                         <span className="sr-only">Open user menu</span>
                                         <UserIcon className="h-6 w-6" aria-hidden="true" />

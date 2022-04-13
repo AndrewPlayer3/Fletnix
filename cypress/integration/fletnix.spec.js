@@ -43,8 +43,8 @@ describe('Login on Home Page', () => {
     cy.visit('http://localhost:3000/')
 
     // Find the signin button under the profile menu
-    cy.get('#headlessui-menu-button-1 > .h-6').click()
-    cy.get('#headlessui-menu-item-9').click()
+    cy.get('div[id*="menu"]').click()
+    cy.get('a[class*="signin"]').click()
     
     // Fill out the login form and submit it
     cy.get('input[name*="username"]').type('viewer')
@@ -94,9 +94,9 @@ describe('Login on dashboard with content_editor role', () => {
     cy.get('input[name*="password"]').type('editor')
     cy.get('button[class="form_button"]').click()
 
-    // Find the signin button under the profile menu
-    cy.get('#headlessui-menu-button-1 > .h-6').click()
-    cy.get('#headlessui-menu-item-11').click()
+    // Find the dashboard button in the menu
+    cy.get('div[id*="menu"]').click()
+    cy.get('a[class*="dashboard"]').click()
 
     // Verify the upload form and delete option are available
     cy.get('label').contains('Select the Video File')
@@ -125,9 +125,9 @@ describe('Login on dashboard with content_manager role', () => {
     cy.get('input[name*="password"]').type('manager')
     cy.get('button[class="form_button"]').click()
 
-    // Find the signin button under the profile menu
-    cy.get('#headlessui-menu-button-1 > .h-6').click()
-    cy.get('#headlessui-menu-item-11').click()
+    // Find the dashboard button in the menu
+    cy.get('div[id*="menu"]').click()
+    cy.get('a[class*="dashboard"]').click()
 
     // Verify the upload form and delete option are available
     cy.get('label').should('not.exist')
