@@ -54,6 +54,16 @@ jobs:
 
       - name: Build Project & Test
         run: |
+          echo -e "HOST_NAME=${{secrets.HOST_NAME}}\n"\
+                  "ALLOW_ROLES=${{secrets.ALLOW_ROLES}}\n"\
+                  "MONGODB_URL=${{secrets.MONGODB_URL}}\n"\
+                  "NEXTAUTH_URL=${{secrets.NEXTAUTH_URL}}\n"\
+                  "JWT_SECRET=${{secrets.JWT_SECRET}}\n"\
+                  "GOOGLE_STORAGE=${{secrets.GOOGLE_STORAGE}}\n"\
+                  "GOOGLE_BUCKET_NAME=${{secrets.GOOGLE_BUCKET_NAME}}\n"\
+                  "GOOGLE_PROJECT_ID=${{secrets.GOOGLE_PROJECT_ID}}\n"\
+                  "GOOGLE_PRIVATE_KEY=${{secrets.GOOGLE_PRIVATE_KEY}}\n"\
+                  "GOOGLE_CLIENT_EMAIL=${{secrets.GOOGLE_CLIENT_EMAIL}}" > .env.local
           npm install .
           npm run build && npm run e2e:headless
 
