@@ -35,9 +35,15 @@ export default function Content({ videos }) {
                                 </div>
                             </>
                             :
-                            <div className='pb-8 justify-center'>
-                                <ContentPanel videos={videos} role={session.user.role} className={'content_panel_manager'} />
-                            </div>
+                            <>
+                            { session.user.role.content_manager ?
+                                <div className='pb-8 justify-center'>
+                                    <ContentPanel videos={videos} role={session.user.role} className={'content_panel_manager'} />
+                                </div>
+                                :
+                                (router.push('/'), null)
+                            }
+                            </>
                         }
                     </div>
                 </>

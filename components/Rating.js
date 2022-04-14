@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const postRating = (video_rating, video_id) => {
     fetch(process.env.HOST_NAME + '/api/videos/' + video_id + '/rate', {

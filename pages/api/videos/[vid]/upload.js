@@ -64,8 +64,7 @@ async function deleteFromCloud(fileName) {
     await deleteFile();
 }
 
-
-export default async (req, res) => {
+const handler = async (req, res) => {
 
     const { vid } = req.query;
 
@@ -112,3 +111,5 @@ export default async (req, res) => {
         }
     }
 }
+
+export default handler

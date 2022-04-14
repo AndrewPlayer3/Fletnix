@@ -14,6 +14,6 @@ module.exports = {
     GOOGLE_CLIENT_EMAIL: process.env.GOOGLE_CLIENT_EMAIL,       // --
   },
   images: {
-    domains: ["i.imgur.com", "i.ytimg.com", "storage.googleapis.com"],
+    domains: ["i.imgur.com", "i.ytimg.com", "storage.googleapis.com", "localhost", "fletnix.vercel.app", "fletnix-git-dev-andrewplayer3.vercel.app"],
   }
 }

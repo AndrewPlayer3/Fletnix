@@ -1,1 +1,5 @@
-{}
+{
+    "video": false,
+    "screenshot": false,
+    "screenshotOnRunFailure": false
+}

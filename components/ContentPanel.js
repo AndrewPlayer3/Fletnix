@@ -77,29 +77,29 @@ export default function ContentPanel({ videos, role, className}) {
                 <table className='table-auto'>
                     <thead>
                         <tr className='border-b border-solid border-stone-900 w-full'>
-                            <th scope="col" className='content_panel_header_text pl-4 pr-2 pt-2 pb-1 xxs:pl-2'>
+                            <th scope="col" className='content_panel_header_text pl-4 pr-2 pt-2 pb-1 xxs:pl-2' id='video_col'>
                                 Video
                             </th>
-                            <th scope="col" className='content_panel_header_text flex shrink pt-2 pb-1 w-1/5'>
+                            <th scope="col" className='content_panel_header_text flex shrink pt-2 pb-1 w-1/5' id='title_col'>
                                 Title
                             </th>
                             {role.content_manager ?
                                 <>
-                                    <th scope="col" className='content_panel_header_text pt-2 pb-1 px-2 xs:px-2'>
+                                    <th scope="col" className='content_panel_header_text pt-2 pb-1 px-2 xs:px-2' id='views_col'>
                                         Views
                                     </th>
-                                    <th scope="col" className='content_panel_header_text pt-2 pb-1 px-2'>
+                                    <th scope="col" className='content_panel_header_text pt-2 pb-1 px-2' id='rating_col'>
                                         Rating
                                     </th>
                                 </>
                                 :
                                 <></>
                             }
-                            <th scope="col" className='content_panel_header_text pt-2 pb-1 px-2 xs:hidden'>
+                            <th scope="col" className='content_panel_header_text pt-2 pb-1 px-2 xs:hidden' id='data_col'>
                                 Date
                             </th>
                             {role.content_editor ?
-                                <th scope="col" className='content_panel_header_text pt-2 pb-1 px-2'>
+                                <th scope="col" className='content_panel_header_text pt-2 pb-1 px-2' id='delete_col'>
                                     Delete
                                 </th>
                                 :
@@ -118,6 +118,7 @@ export default function ContentPanel({ videos, role, className}) {
                                         src={process.env.GOOGLE_STORAGE + video.thumbnail}
                                         style='box-shadow: 10px 10px 10px'
                                         className='rounded-sm'
+                                        alt={'Thumbnail for ' + video.title}
                                     />
                                 </th>
                                 <td className="w-80">
