@@ -1,24 +1,23 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema
 
 const user = new Schema({
-
     username: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
 
     password: {
         type: String,
-        required: true
+        required: true,
     },
 
     email: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
 
     /*
@@ -27,27 +26,28 @@ const user = new Schema({
      * Content Manager | Can view analytics + Viewer
      */
     role: {
-        viewer: { 
+        viewer: {
             type: Boolean,
-            default: true
+            default: true,
         },
         content_editor: Boolean,
-        content_manager: Boolean
+        content_manager: Boolean,
     },
 
-    /* 
+    /*
      * Each time a user rates a video, we log the video and value to avoid
      * user's rating things more than once.
      */
-    ratings: [{
-        video_id: String,
-        rating: Number
-    }]
+    ratings: [
+        {
+            video_id: String,
+            rating: Number,
+        },
+    ],
+})
 
-});
+mongoose.models = {}
 
-mongoose.models = {};
+var User = mongoose.model('User', user)
 
-var User = mongoose.model('User', user);
-
-export default User;
+export default User

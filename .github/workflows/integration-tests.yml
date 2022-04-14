@@ -1,42 +1,52 @@
 name: integration-tests
 on:
-  push:
-    branches:
-      - 'dev'
-  pull_request:
-    branches:
-      - 'main'
+    push:
+        branches:
+            - 'dev'
+    pull_request:
+        branches:
+            - 'main'
 
 env:
-  HOST_NAME: ${{secrets.HOST_NAME}}
-  ALLOW_ROLES: ${{secrets.ALLOW_ROLES}}
-  MONGODB_URL: ${{secrets.MONGODB_URL}}
-  NEXTAUTH_URL: ${{secrets.NEXTAUTH_URL}}
-  JWT_SECRET: ${{secrets.JWT_SECRET}}
-  GOOGLE_STORAGE: ${{secrets.GOOGLE_STORAGE}}
-  GOOGLE_BUCKET_NAME: ${{secrets.GOOGLE_BUCKET_NAME}}
-  GOOGLE_PROJECT_ID: ${{secrets.GOOGLE_PROJECT_ID}}
-  GOOGLE_PRIVATE_KEY: ${{secrets.GOOGLE_PRIVATE_KEY}}
-  GOOGLE_CLIENT_EMAIL: ${{secrets.GOOGLE_CLIENT_EMAIL}}
+    HOST_NAME: ${{secrets.HOST_NAME}}
+    ALLOW_ROLES: ${{secrets.ALLOW_ROLES}}
+    MONGODB_URL: ${{secrets.MONGODB_URL}}
+    NEXTAUTH_URL: ${{secrets.NEXTAUTH_URL}}
+    JWT_SECRET: ${{secrets.JWT_SECRET}}
+    GOOGLE_STORAGE: ${{secrets.GOOGLE_STORAGE}}
+    GOOGLE_BUCKET_NAME: ${{secrets.GOOGLE_BUCKET_NAME}}
+    GOOGLE_PROJECT_ID: ${{secrets.GOOGLE_PROJECT_ID}}
+    GOOGLE_PRIVATE_KEY: ${{secrets.GOOGLE_PRIVATE_KEY}}
+    GOOGLE_CLIENT_EMAIL: ${{secrets.GOOGLE_CLIENT_EMAIL}}
 
 jobs:
-  test-ubuntu-20:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+    test-ubuntu-20:
+        runs-on: ubuntu-20.04
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
 
-      - name: Build Project & Test
-        run: |
-          echo -e "HOST_NAME=${{secrets.HOST_NAME}}\n"\
-                  "ALLOW_ROLES=${{secrets.ALLOW_ROLES}}\n"\
-                  "MONGODB_URL=${{secrets.MONGODB_URL}}\n"\
-                  "NEXTAUTH_URL=${{secrets.NEXTAUTH_URL}}\n"\
-                  "JWT_SECRET=${{secrets.JWT_SECRET}}\n"\
-                  "GOOGLE_STORAGE=${{secrets.GOOGLE_STORAGE}}\n"\
-                  "GOOGLE_BUCKET_NAME=${{secrets.GOOGLE_BUCKET_NAME}}\n"\
-                  "GOOGLE_PROJECT_ID=${{secrets.GOOGLE_PROJECT_ID}}\n"\
-                  "GOOGLE_PRIVATE_KEY=${{secrets.GOOGLE_PRIVATE_KEY}}\n"\
-                  "GOOGLE_CLIENT_EMAIL=${{secrets.GOOGLE_CLIENT_EMAIL}}" > .env.local
-          npm install .
-          npm run build && npm run e2e:headless
+            - name: Build Project & Test
+              run: |
+                  echo -e "HOST_NAME=${{secrets.HOST_NAME}}\n"\
+                          "ALLOW_ROLES=${{secrets.ALLOW_ROLES}}\n"\
+                          "MONGODB_URL=${{secrets.MONGODB_URL}}\n"\
+                          "NEXTAUTH_URL=${{secrets.NEXTAUTH_URL}}\n"\
+                          "JWT_SECRET=${{secrets.JWT_SECRET}}\n"\
+                          "GOOGLE_STORAGE=${{secrets.GOOGLE_STORAGE}}\n"\
+                          "GOOGLE_BUCKET_NAME=${{secrets.GOOGLE_BUCKET_NAME}}\n"\
+                          "GOOGLE_PROJECT_ID=${{secrets.GOOGLE_PROJECT_ID}}\n"\
+                          "GOOGLE_PRIVATE_KEY=${{secrets.GOOGLE_PRIVATE_KEY}}\n"\
+                          "GOOGLE_CLIENT_EMAIL=${{secrets.GOOGLE_CLIENT_EMAIL}}" > .env.local
+                  npm install .
+                  npm run build
+                  echo "RUNNING CHROME TEST"
+                  npm run e2e:chrome:headless
+                  echo "RUNNING CHROMIUM TEST"
+                  npm run e2e:chromium:headless
+                  echo "RUNNING ELECTRON TEST"
+                  npm run e2e:electron:headless
+                  echo "RUNNING FIREFOX TEST"
+                  npm run e2e:firefox:headless
+                  echo "RUNNING EDGE TEST"
+                  npm run e2e:edge:headless

@@ -1,20 +1,19 @@
 export default async function queryVideos(context) {
+    let url = process.env.HOST_NAME + '/api/videos'
 
-    let url = process.env.HOST_NAME + "/api/videos";
-
-    let c = context ?? { query: { title: '' } };
+    let c = context ?? { query: { title: '' } }
 
     if (c.query.title) {
-        url += "?text_query=" + c.query.title;
+        url += '?text_query=' + c.query.title
     }
 
     const res = await fetch(url, {
         method: 'GET',
         headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
         },
-    });
-    const data = await res.json();
+    })
+    const data = await res.json()
 
-    return data.query_results;
+    return data.query_results
 }

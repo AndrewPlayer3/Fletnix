@@ -1,53 +1,52 @@
-import mongoose from 'mongoose';
-var Schema = mongoose.Schema;
+import mongoose from 'mongoose'
+
+var Schema = mongoose.Schema
 
 var _metadata = new Schema({
+    length: Number, // These are NOT currently pulled from the
+    resolution: String, // metadata of the file.
+})
 
-    length: Number,     // These are NOT currently pulled from the 
-    resolution: String  // metadata of the file.
-
-});
-
-var _analytics = new Schema({ 
-
-    total_rating: { // Total sum of all ratings.
+var _analytics = new Schema({
+    total_rating: {
+        // Total sum of all ratings.
         type: Number,
-        default: 0
+        default: 0,
     },
 
-    num_ratings: {  // Total number of ratings.
+    num_ratings: {
+        // Total number of ratings.
         type: Number,
-        default: 0
+        default: 0,
     },
 
-    views: {        // Total number of views (video's page loaded).
+    views: {
+        // Total number of views (video's page loaded).
         type: Number,
-        default: 0
-    }
+        default: 0,
+    },
 
     /* Strech Analytics
     avg_watch_time: Number,
     regions: {"Country": num_views},
     ...
     */
-
-});
+})
 
 var video = new Schema({
-
     title: {
         type: String,
-        required: true
+        required: true,
     },
- 
-    filename: String,  // videos/{_id}.{mimetype}
+
+    filename: String, // videos/{_id}.{mimetype}
     thumbnail: String, // thumbnails/{_id}.{mimetype}
 
     created_at: {
         type: Date,
         default: Date.now,
         required: true,
-        immutable: true
+        immutable: true,
     },
 
     description: String,
@@ -56,12 +55,11 @@ var video = new Schema({
 
     metadata: _metadata,
 
-    analytics: _analytics
+    analytics: _analytics,
+})
 
-});
+mongoose.models = {}
 
-mongoose.models = {};
+var Video = mongoose.model('Video', video)
 
-var Video = mongoose.model('Video', video);
-
-export default Video;
+export default Video

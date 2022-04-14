@@ -2,114 +2,113 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-
+@layer base {
     /* General Background Styles */
     body {
-        @apply theme_color scroll-smooth font-body
+        @apply theme_color scroll-smooth font-body;
     }
 
     /* Hide scrollbars without removing functionality */
     * {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;     /* Firefox     */
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox     */
     }
-    ::-webkit-scrollbar {          /* Chrome      */
+    ::-webkit-scrollbar {
+        /* Chrome      */
         display: none;
     }
 
     .theme_color {
-        @apply bg-gradient-to-l from-stone-900 via-[#1F013F] to-stone-900
+        @apply bg-gradient-to-l from-stone-900 via-[#1F013F] to-stone-900;
     }
 
     .bar_theme_color {
-        @apply bg-gradient-to-l from-stone-900 via-stone-800 to-stone-900
+        @apply bg-gradient-to-l from-stone-900 via-stone-800 to-stone-900;
     }
 
     .transparent_gradient {
-        @apply bg-gradient-to-l from-stone-900 via-transparent to-stone-900
+        @apply bg-gradient-to-l from-stone-900 via-transparent to-stone-900;
     }
 
     .navbar {
-        @apply border-b border-solid border-b-[#2F013F] shadow-sm shadow-[#4A017F]
+        @apply border-b border-solid border-b-[#2F013F] shadow-sm shadow-[#4A017F];
     }
 
     .search_bar {
-        @apply relative flex items-center justify-center min-w-0  w-full px-3 py-1.5 text-stone-100 font-normal bg-stone-900;
-        @apply bg-opacity-20 rounded-lg border border-opacity-0 border-[#3F015F] transition ease-in-out mr-1 m-0 focus:text-stone-100;
-        @apply hover:border-[#4A017F] shadow-sm shadow-[#4A017F] focus:border-[#4A017F] focus:outline-none;
+        @apply relative flex w-full min-w-0 items-center  justify-center bg-stone-900 px-3 py-1.5 font-normal text-stone-100;
+        @apply m-0 mr-1 rounded-lg border border-[#3F015F] border-opacity-0 bg-opacity-20 transition ease-in-out focus:text-stone-100;
+        @apply shadow-sm shadow-[#4A017F] hover:border-[#4A017F] focus:border-[#4A017F] focus:outline-none;
     }
 
     .search_button {
-        @apply tablet:hidden rounded-lg px-4 py-2.5 bg-stone-900 bg-opacity-20 text-stone-100 font-medium text-xs leading-tight uppercase;
-        @apply border border-opacity-0 border-[#2F013F] hover:border hover:border-[#4A017F];
-        @apply shadow-sm shadow-[#4A017F] focus:ring-0  transition duration-150 ease-in-out flex items-center;
+        @apply rounded-lg bg-stone-900 bg-opacity-20 px-4 py-2.5 text-xs font-medium uppercase leading-tight text-stone-100 tablet:hidden;
+        @apply border border-[#2F013F] border-opacity-0 hover:border hover:border-[#4A017F];
+        @apply flex items-center shadow-sm  shadow-[#4A017F] transition duration-150 ease-in-out focus:ring-0;
     }
 
     .footer {
-        @apply z-30 bg-opacity-0 text-slate-200 border border-opacity-0 border-stone-900
+        @apply z-30 border border-stone-900 border-opacity-0 bg-opacity-0 text-slate-200;
     }
 
     .footer_button {
-        @apply rounded-md  bg-gradient-to-bl from-stone-800 via-[#4A015F] to-[#4A015F] border border-solid border-[#4A017F]
+        @apply rounded-md  border border-solid border-[#4A017F] bg-gradient-to-bl from-stone-800 via-[#4A015F] to-[#4A015F];
     }
 
     .form {
-        @apply rounded-b-lg bg-gradient-to-b from-stone-100 via-stone-200 to-stone-100 bg-opacity-95 shadow-xl drop-shadow-xl border border-solid border-[#4A017F]
+        @apply rounded-b-lg border border-solid border-[#4A017F] bg-opacity-95 bg-gradient-to-b from-stone-100 via-stone-200 to-stone-100 shadow-xl drop-shadow-xl;
     }
 
     .form_button {
-        @apply uppercase shadow-md text-sm font-medium tracking-wide whitespace-nowrap bg-gradient-to-tr from-[#4A017A] via-[#4A015A] to-[#4A015A] text-stone-100 p-3 rounded-lg;
-        @apply w-full hover:shadow-md hover:drop-shadow-md hover:scale-100  transition duration-150 border border-solid border-stone-700
+        @apply whitespace-nowrap rounded-lg bg-gradient-to-tr from-[#4A017A] via-[#4A015A] to-[#4A015A] p-3 text-sm font-medium uppercase tracking-wide text-stone-100 shadow-md;
+        @apply w-full border border-solid border-stone-700  transition duration-150 hover:scale-100 hover:shadow-md hover:drop-shadow-md;
     }
 
     .form_button_alt {
-        @apply uppercase shadow-md text-sm font-medium mx-2 tracking-wide whitespace-nowrap bg-gradient-to-tr from-stone-800 via-stone-900 to-stone-900 text-stone-100 p-3 rounded-lg;
-        @apply w-full hover:shadow-md hover:drop-shadow-md hover:border hover:scale-100 transition duration-150 border border-solid border-stone-700
+        @apply mx-2 whitespace-nowrap rounded-lg bg-gradient-to-tr from-stone-800 via-stone-900 to-stone-900 p-3 text-sm font-medium uppercase tracking-wide text-stone-100 shadow-md;
+        @apply w-full border border-solid border-stone-700 transition duration-150 hover:scale-100 hover:border hover:shadow-md hover:drop-shadow-md;
     }
 
     .form_text {
-        @apply uppercase text-sm text-stone-900 font-medium
+        @apply text-sm font-medium uppercase text-stone-900;
     }
 
     .form_input {
-        @apply w-full bg-gradient-to-r from-transparent via-transparent to-stone-100 bg-opacity-100 shadow-md text-gray-900 mt-2 p-3 rounded-lg focus:outline-none
+        @apply mt-2 w-full rounded-lg bg-opacity-100 bg-gradient-to-r from-transparent via-transparent to-stone-100 p-3 text-gray-900 shadow-md focus:outline-none;
     }
 
     .content_panel_manager {
-        @apply rounded-b-xl bg-stone-100 border border-solid border-stone-900
+        @apply rounded-b-xl border border-solid border-stone-900 bg-stone-100;
     }
 
     .content_panel_editor {
-        @apply shadow-lg shadow-[#4F017F] border border-solid border-[#4A017F] rounded-xl bg-stone-100
+        @apply rounded-xl border border-solid border-[#4A017F] bg-stone-100 shadow-lg shadow-[#4F017F];
     }
 
     .content_panel_header_text {
-        @apply text-left text-sm font-medium text-stone-700
+        @apply text-left text-sm font-medium text-stone-700;
     }
-     
+
     .content_panel_body_text {
-        @apply text-left text-sm font-light text-stone-700
+        @apply text-left text-sm font-light text-stone-700;
     }
 
     .user_menu {
-        @apply rounded-md shadow-xl drop-shadow-xl bg-stone-900 bg-opacity-95 border border-solid border-stone-700 text-stone-900 z-50 focus:outline-none
+        @apply z-50 rounded-md border border-solid border-stone-700 bg-stone-900 bg-opacity-95 text-stone-900 shadow-xl drop-shadow-xl focus:outline-none;
     }
 
     .user_menu_options {
-        @apply bg-stone-800 cursor-pointer
+        @apply cursor-pointer bg-stone-800;
     }
 
     .user_menu_text {
-        @apply block px-4 py-2 text-sm font-medium text-stone-100 hover:bg-stone-900
+        @apply block px-4 py-2 text-sm font-medium text-stone-100 hover:bg-stone-900;
     }
 
     .video_glow {
-        @apply shadow-sm shadow-[#47017F]
+        @apply shadow-sm shadow-[#47017F];
     }
 
     .video_info_box {
-        @apply rounded-lg bg-gradient-to-b from-transparent via-transparent to-transparent shadow-sm shadow-[#2F015F] border border-opacity-90 border-[#2F013F]
+        @apply rounded-lg border border-[#2F013F] border-opacity-90 bg-gradient-to-b from-transparent via-transparent to-transparent shadow-sm shadow-[#2F015F];
     }
-
 }
