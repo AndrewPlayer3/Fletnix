@@ -58,7 +58,7 @@ describe('Login on Home Page', () => {
     cy.url().should('include', '/videos/624d7d8d2324f164ebf6fa9b')
 
     // Find the link to the video which only exists when logged in
-    cy.get('h1').contains('Incredibles 2')
+    cy.get('h1').contains('Incredibles 2').should('be.visible')
     cy.get('video[src*="https://storage.googleapis.com/fletnix-dev/videos/624d7d8d2324f164ebf6fa9b.mp4"]')
   })
 })
