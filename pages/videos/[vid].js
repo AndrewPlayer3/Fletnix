@@ -1,5 +1,4 @@
 import { useSession } from "next-auth/react"
-import ReactPlayer from 'react-player/file';
 import Image from 'next/image'
 import Rating from '../../components/Rating'
 import DisplayRating from '../../components/DisplayRating'
@@ -9,7 +8,6 @@ import loginStatus from '../../helpers/login-status'
 import LoginForm from '../../components/LoginForm'
 
 const ReactPlayerFile = require('react-player/file');
-const ReactPlayerYoutube = require('react-player/youtube');
 
 export async function getServerSideProps(context) {
 

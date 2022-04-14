@@ -1,4 +1,3 @@
-import { PencilIcon } from '@heroicons/react/solid'
 import LoginForm from "../components/LoginForm";
 
 {/* Get info from login session */ }

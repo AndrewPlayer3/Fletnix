@@ -1,6 +1,5 @@
 import NavBar from "./common/Navbar/Navbar"
 import Footer from "../components/common/Footer"
-import { useRouter } from 'next/router'
 
 export default function Layout({ children }) {
     return (
