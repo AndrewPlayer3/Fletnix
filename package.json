@@ -6,8 +6,17 @@
     "start": "next start",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
+    "cypress:firefox": "cypress run --browser firefox --headless",
+    "cypress:chrome": "cypress run --browser chrome --headless",
+    "cypress:chromium": "cypress run --browser chromium --headless",
+    "cypress:electron": "cypress run --browser electron --headless",
+    "cypress:edge": "cypress run --browser edge --headless",
     "e2e": "start-server-and-test start http://localhost:3000 cypress",
-    "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless"
+    "e2e:chrome:headless": "start-server-and-test start http://localhost:3000 cypress:chrome",
+    "e2e:firefox:headless": "start-server-and-test start http://localhost:3000 cypress:firefox",
+    "e2e:chromium:headless": "start-server-and-test start http://localhost:3000 cypress:chromium",
+    "e2e:electron:headless": "start-server-and-test start http://localhost:3000 cypress:electron",
+    "e2e:edge:headless": "start-server-and-test start http://localhost:3000 cypress:edge"
   },
   "dependencies": {
     "@google-cloud/storage": "^5.19.0",

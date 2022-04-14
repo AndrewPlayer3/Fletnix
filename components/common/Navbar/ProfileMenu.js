@@ -7,113 +7,134 @@ import queryVideos from '../../../pages/api/helpers/video_query'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
-
 export default function ProfileMenu() {
+    const { data: session, status } = useSession()
+    const router = useRouter()
+    const isLoggedIn = status === 'authenticated'
+    const [login, setLogin] = useState(false)
+    const [videos, setVideos] = useState(false)
+    const [path, setPath] = useState('')
 
-    const { data: session, status } = useSession();
-    const router = useRouter();
-    const isLoggedIn = status === "authenticated";
-    const [login, setLogin] = useState(false);
-    const [videos, setVideos] = useState(false);
-    const [path, setPath] = useState('');
-
-    let MenuItem;
+    let MenuItem
 
     const role = {
-        content_editor: isLoggedIn ? (session.user.role.content_editor ?? false) : false,
-        content_manager: isLoggedIn ? (session.user.role.content_manager ?? false) : false
+        content_editor: isLoggedIn
+            ? session.user.role.content_editor ?? false
+            : false,
+        content_manager: isLoggedIn
+            ? session.user.role.content_manager ?? false
+            : false,
     }
 
-    if (router.pathname != path ) { 
-        setPath(router.pathname);
-        setLogin(false);
+    if (router.pathname != path) {
+        setPath(router.pathname)
+        setLogin(false)
     }
 
     if (isLoggedIn) {
-        MenuItem = <Menu.Items className="origin-top-right absolute right-0 w-24 py-1 user_menu">
-            <Menu.Item>
-                {({ active }) => (
-                    <Link
-                        id='profile'
-                        href='/profile'
-                        className={(active ? 'user_menu_options' : '')}
-                    >
-                        <a className={'profile user_menu_text'}>
-                            Profile
-                        </a>
-                    </Link>
-                )}
-            </Menu.Item>
-            {role.content_editor || role.content_manager ?
+        MenuItem = (
+            <Menu.Items className="user_menu absolute right-0 w-24 origin-top-right py-1">
                 <Menu.Item>
                     {({ active }) => (
                         <Link
-                            id='dashboard'
-                            href='/dashboard'
-                            className={(active ? 'user_menu_options' : '')}
+                            id="profile"
+                            href="/profile"
+                            className={active ? 'user_menu_options' : ''}
+                            passHref
                         >
-                            <a className={'dashboard user_menu_text'}>
-                                Dashboard
-                            </a>
+                            <a className={'profile user_menu_text'}>Profile</a>
                         </Link>
                     )}
                 </Menu.Item>
-                :
-                <></>
-            }
-            <Menu.Item>
-                {({ active }) => (
-                    <a
-                        id='signout'
-                        onClick={() => signOut()}
-                        className={'signout ' + (active ? 'user_menu_options' : '') + ' user_menu_text'}
-                    >
-                        Sign out
-                    </a>
+                {role.content_editor || role.content_manager ? (
+                    <Menu.Item>
+                        {({ active }) => (
+                            <Link
+                                id="dashboard"
+                                href="/dashboard"
+                                className={active ? 'user_menu_options' : ''}
+                                passHref
+                            >
+                                <a className={'dashboard user_menu_text'}>
+                                    Dashboard
+                                </a>
+                            </Link>
+                        )}
+                    </Menu.Item>
+                ) : (
+                    <></>
                 )}
-            </Menu.Item>
-        </Menu.Items>
-    }
-    else {
-        MenuItem = <Menu.Items className="origin-top-right absolute right-0 w-24 py-1 user_menu">
-            <Menu.Item>
-                {({ active }) => (
-                    <a
-                        id='signin'
-                        className={'signin ' + (active ? 'user_menu_options' : '') +  ' user_menu_text'}
-                        onClick={async () => { setLogin(true); setVideos(await queryVideos()) }}
-                    >
-                        Sign in
-                    </a>
-                )}
-            </Menu.Item>
-        </Menu.Items>
+                <Menu.Item>
+                    {({ active }) => (
+                        <a
+                            id="signout"
+                            onClick={() => signOut()}
+                            className={
+                                'signout ' +
+                                (active ? 'user_menu_options' : '') +
+                                ' user_menu_text'
+                            }
+                        >
+                            Sign out
+                        </a>
+                    )}
+                </Menu.Item>
+            </Menu.Items>
+        )
+    } else {
+        MenuItem = (
+            <Menu.Items className="user_menu absolute right-0 w-24 origin-top-right py-1">
+                <Menu.Item>
+                    {({ active }) => (
+                        <a
+                            id="signin"
+                            className={
+                                'signin ' +
+                                (active ? 'user_menu_options' : '') +
+                                ' user_menu_text'
+                            }
+                            onClick={async () => {
+                                setLogin(true)
+                                setVideos(await queryVideos())
+                            }}
+                        >
+                            Sign in
+                        </a>
+                    )}
+                </Menu.Item>
+            </Menu.Items>
+        )
     }
 
     return (
         <>
-            {(videos && login && !isLoggedIn) ?
+            {videos && login && !isLoggedIn ? (
                 <>
-                    <div className='absolute transition delay-50 top-14 m-auto -z-10'>
+                    <div className="delay-50 absolute top-14 -z-10 m-auto transition">
                         <LoginForm />
                     </div>
-                    <div onClick={() => setLogin(false)} className='absolute top-14 w-screen h-screen theme_color opacity-70 -z-30'></div>
+                    <div
+                        onClick={() => setLogin(false)}
+                        className="theme_color absolute top-14 -z-30 h-screen w-screen opacity-70"
+                    ></div>
                 </>
-                :
+            ) : (
                 <></>
-            }
+            )}
             <Disclosure as="nav">
                 {({ open }) => (
                     <>
                         <div className="relative inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                             <Menu as="div" className="relative">
-                                <div id='menu'>
-                                    <Menu.Button className="text-[#EFF1F3] flex text-sm rounded-full px-2 py-2 hover:scale-105">
-                                        <span className="sr-only">Open user menu</span>
-                                        <UserIcon className="h-6 w-6" aria-hidden="true" />
+                                <div id="menu">
+                                    <Menu.Button className="flex rounded-full px-2 py-2 text-sm text-[#EFF1F3] hover:scale-105">
+                                        <span className="sr-only">
+                                            Open user menu
+                                        </span>
+                                        <UserIcon
+                                            className="h-6 w-6"
+                                            aria-hidden="true"
+                                        />
                                     </Menu.Button>
                                 </div>
                                 <Transition
