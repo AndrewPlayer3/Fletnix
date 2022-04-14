@@ -6,7 +6,7 @@ export default function Results({ result, classes }) {
             {/* Map each video data AKA display each video thmbnail */}
             <div className={classes}>
                 {result.map((result) => (
-                    <Thumbnail key={result.id} result={result} />
+                    <Thumbnail key={result._id} result={result} />
                 ))}
             </div>
         </div>
