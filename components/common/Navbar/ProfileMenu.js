@@ -39,9 +39,9 @@ export default function ProfileMenu() {
                     <Link
                         id='profile'
                         href='/profile'
-                        className={'profile ' + (active ? 'user_menu_options' : '')}
+                        className={(active ? 'user_menu_options' : '')}
                     >
-                        <a className={'user_menu_text'}>
+                        <a className={'profile user_menu_text'}>
                             Profile
                         </a>
                     </Link>
@@ -53,9 +53,9 @@ export default function ProfileMenu() {
                         <Link
                             id='dashboard'
                             href='/dashboard'
-                            className={'dashboard ' + (active ? 'user_menu_options' : '')}
+                            className={(active ? 'user_menu_options' : '')}
                         >
-                            <a className={'user_menu_text'}>
+                            <a className={'dashboard user_menu_text'}>
                                 Dashboard
                             </a>
                         </Link>

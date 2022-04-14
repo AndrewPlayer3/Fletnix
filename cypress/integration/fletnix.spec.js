@@ -100,6 +100,9 @@ describe('Login on dashboard with content_editor role', () => {
     cy.get('div[id*="menu"]').click()
     cy.get('a[class*="dashboard"]').click()
 
+    // Make sure we got there
+    cy.url().should('include', '/dashboard')
+
     // Verify the upload form and delete option are available
     cy.get('label').contains('Select the Video File')
     cy.get('th[id*="delete_col"]')
@@ -130,6 +133,9 @@ describe('Login on dashboard with content_manager role', () => {
     // Find the dashboard button in the menu
     cy.get('div[id*="menu"]').click()
     cy.get('a[class*="dashboard"]').click()
+
+    // Make sure we got there
+    cy.url().should('include', '/dashboard')
 
     // Verify the upload form and delete option are available
     cy.get('label').should('not.exist')
