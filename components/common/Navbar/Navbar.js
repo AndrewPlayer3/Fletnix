@@ -5,6 +5,7 @@ import ProfileMenu from './ProfileMenu'
 import Image from 'next/image'
 
 export default function NavBar({ liveSearch }) {
+
     const [spin, setSpin] = useState(false);
 
     return (
