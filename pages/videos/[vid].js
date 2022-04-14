@@ -78,7 +78,7 @@ export default function Home({ title, location, thumbnail, description, vid }) {
                             <Navbar liveSearch={false} />
                         </div>
                         <div className="relative blur-xl min-w-min lg:w-3/5 lg:h-3/5 lg:left-1/5 pt-8 tablet:w-6/6 tablet:h-6/6 -z-30">
-                            <Image layout='responsive' height={90} width={160} src={thumbnail} />
+                            <Image layout='responsive' alt={'Thumbnail for ' + title} height={90} width={160} src={thumbnail} />
                             <div className='mt-4 video_info_box'>
                                 <div className='flex h-auto w-auto title-and-rating mt-4'>
                                     <div className='ml-4 mr-4 w-full items-start justify-start'>

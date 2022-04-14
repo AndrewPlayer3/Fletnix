@@ -4,10 +4,10 @@ export default function DisplayRating({ rating }) {
             {[...Array(5)].map((star, index) => {
                 index += 1;
                 return (
-                    <div className='w-auto h-full mb-1 items-end justify-center shadow-xl'>
+                    <div key={'Div:' + index} className='w-auto h-full mb-1 items-end justify-center shadow-xl'>
                         <button
                             type="button"
-                            key={index}
+                            key={'Star:' + index}
                             className={index <= (rating) ? "text-stone-100 text-2xl" : "text-stone-100 text-2xl"} >
                             {index <= (rating) ? <span className="star drop-shadow-xl">&#9733;</span> : <span className="star">&#9734;</span>}
                         </button>

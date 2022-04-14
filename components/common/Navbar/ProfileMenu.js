@@ -5,6 +5,7 @@ import { useSession, signOut } from 'next-auth/react'
 import LoginForm from '../../LoginForm'
 import queryVideos from '../../../pages/api/helpers/video_query'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -35,25 +36,29 @@ export default function ProfileMenu() {
         MenuItem = <Menu.Items className="origin-top-right absolute right-0 w-24 py-1 user_menu">
             <Menu.Item>
                 {({ active }) => (
-                    <a
+                    <Link
                         id='profile'
-                        href='/profile'//{user.viewer ? "profile" : "dashboard"}
-                        className={'profile ' + classNames(active ? 'user_menu_options' : '', 'user_menu_text')}
+                        href='/profile'
+                        className={'profile ' + (active ? 'user_menu_options' : '')}
                     >
-                        Profile
-                    </a>
+                        <a className={'user_menu_text'}>
+                            Profile
+                        </a>
+                    </Link>
                 )}
             </Menu.Item>
             {role.content_editor || role.content_manager ?
                 <Menu.Item>
                     {({ active }) => (
-                        <a
+                        <Link
                             id='dashboard'
-                            href='/dashboard'//{user.viewer ? "profile" : "dashboard"}
-                            className={'dashboard ' + classNames(active ? 'user_menu_options' : '', 'user_menu_text')}
+                            href='/dashboard'
+                            className={'dashboard ' + (active ? 'user_menu_options' : '')}
                         >
-                            Dashboard
-                        </a>
+                            <a className={'user_menu_text'}>
+                                Dashboard
+                            </a>
+                        </Link>
                     )}
                 </Menu.Item>
                 :
@@ -64,8 +69,7 @@ export default function ProfileMenu() {
                     <a
                         id='signout'
                         onClick={() => signOut()}
-                        href="/"
-                        className={'signout ' + classNames(active ? 'user_menu_options' : '', 'user_menu_text')}
+                        className={'signout ' + (active ? 'user_menu_options' : '') + ' user_menu_text'}
                     >
                         Sign out
                     </a>
@@ -79,7 +83,7 @@ export default function ProfileMenu() {
                 {({ active }) => (
                     <a
                         id='signin'
-                        className={'signin ' + classNames(active ? 'user_menu_options' : '', 'user_menu_text')}
+                        className={'signin ' + (active ? 'user_menu_options' : '') +  ' user_menu_text'}
                         onClick={async () => { setLogin(true); setVideos(await queryVideos()) }}
                     >
                         Sign in

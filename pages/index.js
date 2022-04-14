@@ -27,7 +27,7 @@ export default function Home({ videos }) {
 
     if (videos.length === 0) {
         return (
-            <h1 className="absolute w-2/4 h-2/4 left-1/4 text-2xl text-slate-200 text-center pt-10">Sorry, we couldn't find any videos matching that search.</h1>
+            <h1 className="absolute w-2/4 h-2/4 left-1/4 text-2xl text-slate-200 text-center pt-10">Sorry, we could not find any videos matching that search.</h1>
         )
     }
     return (

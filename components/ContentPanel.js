@@ -118,6 +118,7 @@ export default function ContentPanel({ videos, role, className}) {
                                         src={process.env.GOOGLE_STORAGE + video.thumbnail}
                                         style='box-shadow: 10px 10px 10px'
                                         className='rounded-sm'
+                                        alt={'Thumbnail for ' + video.title}
                                     />
                                 </th>
                                 <td className="w-80">

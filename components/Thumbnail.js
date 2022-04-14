@@ -13,7 +13,7 @@ export default function Thumbnail({ result }) {
             <div className='block my-3 cursor-pointer transition ease-in-out hover:scale-95 focus:animate-ping'>
                 {/* Each Video Thumbnail display/ Display default thumbnail if there is none in db */}
                 <div>
-                    <Link href={{ pathname: '/videos/' + result['_id'] }}>
+                    <Link href={{ pathname: '/videos/' + result['_id'] }} passHref>
                         <div className='rounded-md bg-gradient-to-tr from-transparent via-transparent to-[#4A019F] p-0.5 -skew-x-2 hover:bg-[#4A019F]'>
                             <div className='rounded-md bg-gradient-to-tr from-transparent via-transparent to-[#4A017F] p-0.5 hover:bg-[#4A017F]'>
                                 <div className='relative flex h-auto w-auto rounded-md bg-gradient-to-tr from-transparent via-transparent to-[#4A015F] p-0.5 hover:bg-[#4A015F] shadow-sm hover:shadow-2xl shadow-[#4A017F]'>
@@ -23,6 +23,7 @@ export default function Thumbnail({ result }) {
                                         height='720px'
                                         width='1280px'
                                         className="rounded-md hover:opacity-90"
+                                        alt={'Thumbnail for ' + result['title']}
                                     />
                                     <div className='absolute bottom-0 right-1 -skew-x-3 rounded-md opacity-100'>
                                         <DisplayRating rating={rating} />
