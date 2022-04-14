@@ -21,7 +21,7 @@ describe('Login on Movie Page', () => {
 
     // Verify that the video isn't exposed before logging in
     cy.get('h1').contains('Incredibles 2')
-    cy.get('video[src="https://storage.googleapis.com/fletnix-dev/videos/624d7d8d2324f164ebf6fa9b.mp4"]').should('not.exist')
+    cy.get('video[src*="https://storage.googleapis.com/fletnix-dev/videos/624d7d8d2324f164ebf6fa9b.mp4"]').should('not.exist')
 
     // Find a link with an href attribute containing "about" and click it
     cy.get('input[name*="username"]').type('viewer')
@@ -33,7 +33,7 @@ describe('Login on Movie Page', () => {
 
     // Verify that the video is now exposed.
     cy.get('h1').contains('Incredibles 2')
-    cy.get('video[src="https://storage.googleapis.com/fletnix-dev/videos/624d7d8d2324f164ebf6fa9b.mp4"]')
+    cy.get('video[src*="https://storage.googleapis.com/fletnix-dev/videos/624d7d8d2324f164ebf6fa9b.mp4"]')
   })
 })
 
@@ -59,7 +59,7 @@ describe('Login on Home Page', () => {
 
     // Find the link to the video which only exists when logged in
     cy.get('h1').contains('Incredibles 2')
-    cy.get('video[src="https://storage.googleapis.com/fletnix-dev/videos/624d7d8d2324f164ebf6fa9b.mp4"]')
+    cy.get('video[src*="https://storage.googleapis.com/fletnix-dev/videos/624d7d8d2324f164ebf6fa9b.mp4"]')
   })
 })
 
