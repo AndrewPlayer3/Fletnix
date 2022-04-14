@@ -7,9 +7,9 @@ export default function Layout({ children }) {
             <div className="drop-shadow-lg z-40">
                 <NavBar liveSearch={true} />
             </div>
-            <main className='flex-grow mb-14'>
+            <div className='flex-grow mb-14'>
                 {children}
-            </main>
+            </div>
             <div className="fixed bottom-0">
                 <Footer />
             </div>
