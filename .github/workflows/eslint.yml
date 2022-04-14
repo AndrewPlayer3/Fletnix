@@ -8,13 +8,13 @@ on:
       - 'main'
 
 jobs:
-  ubuntu-20:
+  lint-ubuntu-20:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Build Project & Test
+      - name: Install deps and lint
         run: |
           npm install .
           npx next lint 

@@ -20,7 +20,7 @@ env:
   GOOGLE_CLIENT_EMAIL: ${{secrets.GOOGLE_CLIENT_EMAIL}}
 
 jobs:
-  ubuntu-20:
+  test-ubuntu-20:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -40,20 +40,3 @@ jobs:
                   "GOOGLE_CLIENT_EMAIL=${{secrets.GOOGLE_CLIENT_EMAIL}}" > .env.local
           npm install .
           npm run build && npm run e2e:headless
-
-  # skips the binary installation
-  # shows that the job should not fail
-  # https://github.com/cypress-io/github-action/issues/327
-  without-binary-install:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Cypress tests
-        uses: cypress-io/github-action@v2
-        with:
-          runTests: false
-        env:
-          # skip the binary install
-          CYPRESS_INSTALL_BINARY: 0
