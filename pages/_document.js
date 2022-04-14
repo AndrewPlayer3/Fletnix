@@ -8,12 +8,8 @@ class _Document extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang='en'>
         <Head>
-          <meta
-            name="keywords"
-            content="basic video streaming site in next.js for a project"
-          />
           <link rel="shortcut icon" href="/favicon.png" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
