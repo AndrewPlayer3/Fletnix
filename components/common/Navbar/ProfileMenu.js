@@ -12,7 +12,6 @@ export default function ProfileMenu() {
     const router = useRouter()
     const isLoggedIn = status === 'authenticated'
     const [login, setLogin] = useState(false)
-    const [videos, setVideos] = useState(false)
     const [path, setPath] = useState('')
 
     let MenuItem
@@ -93,9 +92,8 @@ export default function ProfileMenu() {
                                 (active ? 'user_menu_options' : '') +
                                 ' user_menu_text'
                             }
-                            onClick={async () => {
+                            onClick={() => {
                                 setLogin(true)
-                                setVideos(await queryVideos())
                             }}
                         >
                             Sign in
@@ -108,7 +106,7 @@ export default function ProfileMenu() {
 
     return (
         <>
-            {videos && login && !isLoggedIn ? (
+            {login && !isLoggedIn ? (
                 <>
                     <div className="delay-50 absolute top-14 -z-10 m-auto transition">
                         <LoginForm />
@@ -124,10 +122,10 @@ export default function ProfileMenu() {
             <Disclosure as="nav">
                 {({ open }) => (
                     <>
-                        <div className="relative inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                        <div className="relative inset-y-0 right-0 flex items-center sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                             <Menu as="div" className="relative">
                                 <div id="menu">
-                                    <Menu.Button className="flex rounded-full px-2 py-2 text-sm text-[#EFF1F3] hover:scale-105">
+                                    <Menu.Button className="rounded-full py-2 pr-2 text-sm text-[#EFF1F3] hover:scale-105">
                                         <span className="sr-only">
                                             Open user menu
                                         </span>

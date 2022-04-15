@@ -18,7 +18,7 @@ export default function NavBar({ liveSearch }) {
                             className="flex flex-shrink-0 cursor-pointer items-center hover:scale-105"
                         >
                             <Link href="/">
-                                <a className="flex h-auto w-auto">
+                                <a className="flex h-auto w-auto pl-1 tablet:pl-2 xs:pl-1 xs:pr-2">
                                     <div
                                         className={
                                             'ml-1 flex items-center' +
@@ -41,11 +41,11 @@ export default function NavBar({ liveSearch }) {
                                             alt="Logo"
                                         />
                                     </div>
-                                    <div className="ml-1 mr-1 flex items-end justify-center text-2xl text-stone-100 tablet:hidden">
-                                        <h1 className="font-sans font-bold">
-                                            Fletnix
-                                        </h1>
-                                    </div>
+                                    {/* <div className="ml-1 mr-1 flex items-end justify-center text-2xl text-stone-100 tablet:hidden"> */}
+                                    <h1 className="font-sans ml-1 text-2xl font-bold text-stone-100 tablet:hidden">
+                                        Fletnix
+                                    </h1>
+                                    {/* </div> */}
                                 </a>
                             </Link>
                         </div>
