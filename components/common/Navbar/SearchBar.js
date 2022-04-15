@@ -21,7 +21,7 @@ export default function SearchBar({ liveSearch }) {
 
     if (liveSearch) {
         return (
-            <div className="ml-2 flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+            <div className="ml-2 flex flex-1">
                 <div className="flex w-full items-center justify-center">
                     <div className="input-group relative flex w-full items-center">
                         <input
@@ -39,7 +39,7 @@ export default function SearchBar({ liveSearch }) {
         )
     } else {
         return (
-            <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+            <div className="flex flex-1">
                 <div className="flex w-full items-center justify-center py-10">
                     <div className="input-group relative flex w-full items-center">
                         <input
@@ -54,7 +54,7 @@ export default function SearchBar({ liveSearch }) {
                         <button
                             type="submit"
                             onClick={onSubmit}
-                            className="search_button"
+                            className="search_button tablet:hidden"
                             id="button-addon2"
                         >
                             <svg

@@ -11,7 +11,7 @@ export default function Thumbnail({ result }) {
 
     return (
         <div className="">
-            <div className="my-3 block cursor-pointer transition ease-in-out hover:scale-95 focus:animate-ping">
+            <div className="my-3 mx-0.5 block cursor-pointer transition ease-in-out hover:scale-95 focus:animate-ping">
                 {/* Each Video Thumbnail display/ Display default thumbnail if there is none in db */}
                 <div>
                     <Link

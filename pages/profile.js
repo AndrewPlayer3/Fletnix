@@ -12,15 +12,15 @@ export default function ProfilePage() {
     return (
         <>
             {loginStatus(status, router, false) ? (
-                <div className="absolute left-1/5 top-24 h-3/5 w-3/5">
+                <div className="flex justify-center">
                     <Profile user={session.user} />
                 </div>
             ) : (
                 <>
-                    <div className="absolute left-1/5 top-14 z-10 h-3/5 w-3/5">
+                    <div className="flex justify-center">
                         <LoginForm />
                     </div>
-                    <div className="absolute left-1/5 top-24 h-3/5 w-3/5 blur-xl">
+                    <div className="fixed top-14 -z-30 flex w-screen justify-center blur-md">
                         <Profile
                             user={{
                                 username: 'dummyuser',
