@@ -1,4 +1,4 @@
-import connectDB from '../../../../middleware/mongodb'
+import connectDB from '../../../../lib/mongodb'
 import User from '../../../../models/user'
 import Video from '../../../../models/video'
 import { getSession } from 'next-auth/react'

@@ -1,4 +1,4 @@
-import connectDB from '../../../middleware/mongodb'
+import connectDB from '../../../lib/mongodb'
 import Video from '../../../models/video'
 
 const handler = async (req, res) => {

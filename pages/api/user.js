@@ -1,4 +1,4 @@
-import connectDB from '../../middleware/mongodb'
+import connectDB from '../../lib/mongodb'
 import bcrypt from 'bcrypt'
 import User from '../../models/user'
 import { getSession } from 'next-auth/react'

@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import connectDB from '../../../middleware/mongodb'
+import connectDB from '../../../lib/mongodb'
 import bcrypt from 'bcrypt'
 import User from '../../../models/user'
 
