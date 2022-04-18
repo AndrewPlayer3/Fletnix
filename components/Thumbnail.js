@@ -15,7 +15,7 @@ export default function Thumbnail({ result }) {
                 {/* Each Video Thumbnail display/ Display default thumbnail if there is none in db */}
                 <div>
                     <Link
-                        href={{ pathname: '/videos/' + result['_id'] }}
+                        href={{ pathname: '/videos/' + result['entityId'] }}
                         passHref
                     >
                         <div className="-skew-x-2 rounded-md bg-gradient-to-tr from-transparent via-transparent to-[#4A019F] p-0.5 hover:bg-[#4A019F]">
