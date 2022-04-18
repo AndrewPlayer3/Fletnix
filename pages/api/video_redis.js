@@ -5,6 +5,7 @@ import {
     getVideoByIdAndUpdate,
     getVideoByIdAndRate,
     getVideoBySearch,
+    getVideoByIdAndDelete,
 } from '../../lib/redis'
 import { connect } from '../../lib/redis'
 
@@ -77,6 +78,10 @@ export default async function handler(req, res) {
             description,
             tags,
         })
+        return res.status(200).send({ success: true, videos: videos })
+    } else if (req.method == 'DELETE') {
+        const { id } = req.body
+        const videos = await getVideoByIdAndDelete(id)
         return res.status(200).send({ success: true, videos: videos })
     } else {
         return res.status(401).send({ success: false, error: 'bad request' })
