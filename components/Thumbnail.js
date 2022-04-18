@@ -4,9 +4,9 @@ import DisplayRating from './DisplayRating'
 
 export default function Thumbnail({ result }) {
     const rating =
-        result['analytics'].num_ratings == 0
+        result['num_ratings'] == 0
             ? 0
-            : result['analytics'].total_rating / result['analytics'].num_ratings
+            : result['total_rating'] / result['num_ratings']
     const thumb_url = process.env.GOOGLE_STORAGE + result['thumbnail']
 
     return (
@@ -37,7 +37,7 @@ export default function Thumbnail({ result }) {
                         </div>
                     </Link>
                 </div>
-                <Link href={'/videos/' + result['_id']} passHref>
+                <Link href={'/videos/' + result['entityId']} passHref>
                     <a className="font-sans shadow-inset-xl pl-1 font-medium text-[#EFF1F3]">
                         {result['title']}
                     </a>

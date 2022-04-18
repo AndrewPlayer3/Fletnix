@@ -2,21 +2,24 @@ import Results from '../components/Results.js'
 import Layout from '../components/Layout.js'
 
 export async function getServerSideProps(context) {
-    var qry = ''
-    if (context.query.text_query)
-        qry = '?text_query=' + context.query.text_query
+    const { search } = context.query
 
-    const res = await fetch(process.env.HOST_NAME + '/api/videos' + qry, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
+    let query = search ? '?search=' + search : ''
+
+    const res = await fetch(
+        process.env.HOST_NAME + '/api/video_redis' + query,
+        {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }
+    )
     const data = await res.json()
 
     return {
         props: {
-            videos: data.query_results,
+            videos: data.videos,
         },
     }
 }

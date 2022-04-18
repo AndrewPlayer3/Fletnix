@@ -12,23 +12,26 @@ const ReactPlayerFile = require('react-player/file')
 export async function getServerSideProps(context) {
     const { vid } = context.query
 
-    const res = await fetch(process.env.HOST_NAME + '/api/videos/' + vid, {
-        method: 'GET',
-    })
+    const res = await fetch(
+        process.env.HOST_NAME + '/api/video_redis?id=' + vid,
+        {
+            method: 'GET',
+        }
+    )
     const data = await res.json()
 
-    await fetch(process.env.HOST_NAME + '/api/videos/' + vid, {
-        // Increment the view counter.
-        method: 'PUT',
-    })
+    // await fetch(process.env.HOST_NAME + '/api/video_redis?id=' + vid, {
+    //     // Increment the view counter.
+    //     method: 'PUT',
+    // })
 
     return {
         props: {
             id: vid,
-            title: data.video.title,
-            location: process.env.GOOGLE_STORAGE + data.video.filename,
-            thumbnail: process.env.GOOGLE_STORAGE + data.video.thumbnail,
-            description: data.video.description,
+            title: data.videos.title,
+            location: process.env.GOOGLE_STORAGE + data.videos.filename,
+            thumbnail: process.env.GOOGLE_STORAGE + data.videos.thumbnail,
+            description: data.videos.description,
             vid: vid,
         },
     }
